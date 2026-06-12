@@ -17,9 +17,9 @@
             (list color-actual 'Cambiar-a-rojo)
         )
         (t
-            (list color-actual 'Accion-por-defecto) ;;se entiende la idea que es por defecto de no cumplir ninguna
-        )
-    )
+            (list color-actual 'Accion-por-defecto) ;;Es en caso de que no se cumpla la validación de "cambiar-a"
+        )                                           ;;Ya que se da por hecho que el "color-actual ingresa sin inconvenientes"
+    )                                               ;;Mantiene robuzto al codigo
 )
 
 ;; ======================================================== 
