@@ -33,7 +33,7 @@
 ;; IMPACTO: No destructiva
 ;; ======================================================== 
 (defun timer (unix-time)    ;;unix-time es el tiempo epoch
-    (let* ((resto (mod unix-time 216)))      ;;coloque un let para evitar la repeticion
+    (let ((resto (mod unix-time 216)))      ;;coloque un let para evitar la repeticion
         (cond
             ((< resto 90) 'rojo)
             ((< resto 210) 'verde)  
@@ -106,7 +106,7 @@
 )
 
 
-;;Requerimiento N°6
+;;Requerimiento N°5
 
 ;; =================================================================================================================
 ;; FUNCIÓN: crear-ciclos
@@ -117,7 +117,10 @@
 ;; =================================================================================================================
 
 (defun crear-ciclos (minutos)
-  (floor (/ (* minutos 60) 216)))
+  (floor (/ (* minutos 60) 216))
+)
+
+;;Requerimiento 6
 
 ;; ===================================================================================================================================
 ;; FUNCIÓN: informe-distribucion
