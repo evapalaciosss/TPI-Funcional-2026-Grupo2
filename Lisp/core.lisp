@@ -74,6 +74,39 @@
 ;;La intencion de esta logica es que se envie unicamente el tiempo para que calcule de que color estaba a cual cambio
 ;;Y a partir del color actual simplemente dar deducir que color estaba anteriormente, sabiendo el ciclo que tiene
 
+;;Requerimiento 4 a)
+;; ------------------------------------------------------------
+;; Función: duracion-ciclo
+;; Naturaleza: Pura (sin efectos secundarios)
+;; Estrategia de Control: Recursiva Simple (suma directa de fases)
+;; Impacto en Memoria: No Destructiva
+;; Clasificación: Función de cálculo de duración de ciclo semafórico
+;; ------------------------------------------------------------
+
+;;la logica aqui consta en ingresar los segundos de cada color del semaforo rojo,amarillo y verde, en base a esos datos sumar el ciclo del mismo para saber la duracion del mismo
+(defun duracion-ciclo (Seg-rojo Seg-amarillo Seg-verde)
+  (duracion-ciclo-aux (+ Seg-rojo Seg-amarillo Seg-verde Seg-rojo))
+)
+
+;;Requerimiento 4 b)
+;; ------------------------------------------------------------
+;; Función: duracion-ciclo-aux
+;; Naturaleza: Pura (sin efectos secundarios)
+;; Estrategia de Control: Condicional Simple (clasificación de valores)
+;; Impacto en Memoria: No Destructiva (devuelve nuevo valor)
+;; Clasificación: Función auxiliar de recomendación sobre duración de ciclo semafórico
+;; ------------------------------------------------------------
+
+;;total es la suma de segundos del ciclo de semaforo en rojo,amarillo,verde,rojo definida en la funcion duracion-ciclo
+
+(defun duracion-ciclo-aux (total) 
+  (cond
+    ((< total 35) (list total "demasiado corto"))
+    ((> total 150) (list total "demasiado largo"))
+    (t (list total "optimo"))
+	)
+)
+
 
 ;;Requerimiento N°6
 
