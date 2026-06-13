@@ -1,3 +1,5 @@
+;;Requerimiento 1
+
 ;; ======================================================== 
 ;; FUNCION: transicion
 ;; NATURALEZA: Pura (Devuelve la lista con la transicion de colores realiza) 
@@ -22,6 +24,8 @@
     )                                               ;;Mantiene robuzto al codigo
 )
 
+;;Requerimiento 2
+
 ;; ======================================================== 
 ;; FUNCION: timer
 ;; NATURALEZA:  Pura (no devuelve nada en pantalla)
@@ -40,6 +44,30 @@
 ;;del 0 al 89 segundos va a ser rojo, de 90 al 209 va a ser verde y del 210 al 215 va a ser amarillo
 ;;la intencion es dejar en caso de que no sea ni menor o igual a 89, ni mayor o igual a 210
 ;;asi simplemente queda ese intervalo de segundos en medio para el verde, quedando en el ultimo cond
+
+;;Requerimiento 3
+
+;; ======================================================== 
+;; FUNCION: auditoria
+;; NATURALEZA: Impura (escribe en pantalla el cambio de estado) 
+;; ESTRATEGIA: Seleccion condicional mediante cond
+;; IMPACTO: No destructiva
+;; ======================================================== 
+(defun auditoria (unix-time)        ;unix-time es el tiempo epoch
+    (cond
+        ((eq (timer unix-time) 'rojo)                                                   ;;Se usa la funcion ya creada "timer" para que calcule en que tiempo esta actualmente 
+            (format nil "Tiempo ~A: La luz a cambiado de amarillo a rojo" unix-time)    ;;la intencion de los "format nil" es que salgan en string
+        )
+        ((eq (timer unix-time) 'verde)
+            (format nil "Tiempo ~A: La luz a cambiado de rojo a verde" unix-time)
+        )
+        ((eq (timer unix-time) 'amarillo) 
+            (format nil "Tiempo ~A: La luz a cambiado de verde a amarillo" unix-time)
+        )
+    )
+)
+;;La intencion de esta logica es que se envie unicamente el tiempo para que calcule de que color estaba a cual cambio
+;;Y a partir del color actual simplemente dar deducir que color estaba anteriormente, sabiendo el ciclo que tiene
 
 
 ;;Requerimiento N°6
