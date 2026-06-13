@@ -1,0 +1,31 @@
+;; ------------------------------------------------------------
+;; Función: duracion-ciclo
+;; Naturaleza: Pura (sin efectos secundarios)
+;; Estrategia de Control: Recursiva Simple (suma directa de fases)
+;; Impacto en Memoria: No Destructiva
+;; Clasificación: Función de cálculo de duración de ciclo semafórico
+;; ------------------------------------------------------------
+
+(defun duracion-ciclo (Seg-rojo Seg-amarillo Seg-verde)
+  (duracion-ciclo-aux (+ Seg-rojo Seg-amarillo Seg-verde Seg-rojo))
+)
+
+
+;; ------------------------------------------------------------
+;; Función: duracion-ciclo-aux
+;; Naturaleza: Pura (sin efectos secundarios)
+;; Estrategia de Control: Condicional Simple (clasificación de valores)
+;; Impacto en Memoria: No Destructiva (devuelve nuevo valor)
+;; Clasificación: Función auxiliar de recomendación sobre duración de ciclo semafórico
+;; ------------------------------------------------------------
+
+;total es la suma de segundos del ciclo de semaforo en ;rojo,amarillo,verde,rojo
+
+(defun duracion-ciclo-aux (total) 
+  (cond
+    ((< total 35) (list total "demasiado corto"))
+    ((> total 150) (list total "demasiado largo"))
+    (t (list total "optimo"))
+	)
+)
+
