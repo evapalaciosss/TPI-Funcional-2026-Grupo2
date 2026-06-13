@@ -58,14 +58,14 @@
 ;; ======================================================== 
 (defun auditoria (unix-time)        ;unix-time es el tiempo epoch
     (cond
-        ((eq (timer unix-time) 'rojo)                                                   ;;Se usa la funcion ya creada "timer" para que calcule en que tiempo esta actualmente 
-            (format nil "Tiempo ~A: La luz a cambiado de amarillo a rojo" unix-time)    ;;la intencion de los "format nil" es que salgan en string
+        ((eq (timer unix-time) 'rojo)                  ;;Se usa la funcion ya creada "timer" para que calcule en que tiempo esta actualmente 
+            (format t "Tiempo ~A: La luz a cambiado de amarillo a rojo" unix-time)   
         )
         ((eq (timer unix-time) 'verde)
-            (format nil "Tiempo ~A: La luz a cambiado de rojo a verde" unix-time)
+            (format t "Tiempo ~A: La luz a cambiado de rojo a verde" unix-time)
         )
         ((eq (timer unix-time) 'amarillo) 
-            (format nil "Tiempo ~A: La luz a cambiado de verde a amarillo" unix-time)
+            (format t "Tiempo ~A: La luz a cambiado de verde a amarillo" unix-time)
         )
     )
 )
