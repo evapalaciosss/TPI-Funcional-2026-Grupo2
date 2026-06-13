@@ -20,13 +20,10 @@ implementado en lenguaje lisp.
 
 /Lisp Es el codigo fuente del sistema en el lenguaje Common Lisp.
 
-/Fase-2 Es el mismo codigo fuente del sistema pasado por la libreria "" de Quicklisp.
-
-/Fase-3 Se encuentran las funciones Transicion y Timer en lenguaje Clojure.
+/comparativa Se encuentran la comparativa de las funciones transicion y timer, en lenguaje Clojure
 
 /docs En el se encuentra el informe conceptual del proyecto junto con el codigo de honor
 de cada uno de los integrantes
-
 
 - Enlace a video de Youtube de presentación del proyecto
 
