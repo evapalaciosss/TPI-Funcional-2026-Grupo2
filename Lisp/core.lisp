@@ -57,20 +57,21 @@
 ;; IMPACTO: No destructiva
 ;; ======================================================== 
 (defun auditoria (unix-time)        ;unix-time es el tiempo epoch
-    (cond
-        ((eq (timer unix-time) 'rojo)                  ;;Se usa la funcion ya creada "timer" para que calcule en que tiempo esta actualmente 
-            (format t "Tiempo ~A: La luz a cambiado de amarillo a rojo" unix-time)   
-        )
-        ((eq (timer unix-time) 'verde)
-            (format t "Tiempo ~A: La luz a cambiado de rojo a verde" unix-time)
-        )
-        ((eq (timer unix-time) 'amarillo) 
-            (format t "Tiempo ~A: La luz a cambiado de verde a amarillo" unix-time)
+    (let ((resto (mod unix-time 216)))
+        (cond
+            ((= resto 0)                  ;;si coindice con el tiempo pasado significa que hubo un cambio de una transicion 
+                (format t "Tiempo ~A: La luz a cambiado de amarillo a rojo" unix-time)   
+            )
+            ((= resto 90)
+                (format t "Tiempo ~A: La luz a cambiado de rojo a verde" unix-time)
+            )
+            ((= resto 210) 
+                (format t "Tiempo ~A: La luz a cambiado de verde a amarillo" unix-time)
+            )
         )
     )
 )
-;;La intencion de esta logica es que se envie unicamente el tiempo para que calcule de que color estaba a cual cambio
-;;Y a partir del color actual simplemente dar deducir que color estaba anteriormente, sabiendo el ciclo que tiene
+;;corregi haciendo que muestre en que momento hubo una transicion
 
 ;;Requerimiento 4 a)
 ;; ------------------------------------------------------------
