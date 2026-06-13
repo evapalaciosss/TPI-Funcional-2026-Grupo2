@@ -42,7 +42,7 @@
 ;;asi simplemente queda ese intervalo de segundos en medio para el verde, quedando en el ultimo cond
 
 
-;;Requerimiento N°3
+;;Requerimiento N°6
 
 ;; =================================================================================================================
 ;; FUNCIÓN: crear-ciclos
