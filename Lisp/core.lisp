@@ -32,14 +32,19 @@
 ;; ESTRATEGIA: Seleccion condicional
 ;; IMPACTO: No destructiva
 ;; ======================================================== 
-(defun timer (unix-time)    ;;unix-time es el tiempo epoch
-    (cond
-        ((<= (mod unix-time 216) 89) 'rojo)
-        ((>= (mod unix-time 216) 210) 'amarillo)    ;;creo que es la manera maeficiente
-        (t                                          
-            'verde
+(defun timer (unix-time duracion-rojo duracion-verde duracion-amarillo)    ;;unix-time es el tiempo epoch
+    (let* ((tiempo-ciclo (+ duracion-rojo duracion-verde duracion-amarillo))
+            (resto (mod unix-time tiempo-ciclo)))
+        (cond
+            ((< resto duracion-rojo) 'rojo)
+            ((< resto (+ duracion-rojo duracion-verde)) 'verde)
+            (t                                          
+                'amarillo
+            )
         )
     )
+    ;;el cambio se debe a que el tiempo que dura cada color, puede mutar, y al ser numeros fijos lleva a modificar el codigo
+    ;;por ello pide la carga de las duraciones de los colores
 )
 ;;del 0 al 89 segundos va a ser rojo, de 90 al 209 va a ser verde y del 210 al 215 va a ser amarillo
 ;;la intencion es dejar en caso de que no sea ni menor o igual a 89, ni mayor o igual a 210
