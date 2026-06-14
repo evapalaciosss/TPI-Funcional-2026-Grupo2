@@ -77,7 +77,7 @@
 ;; ------------------------------------------------------------
 ;; Función: duracion-ciclo
 ;; Naturaleza: Pura (sin efectos secundarios)
-;; Estrategia de Control: Recursiva Simple (suma directa de fases)
+;; Estrategia de Control: Aritmética simple (suma directa de fases)
 ;; Impacto en Memoria: No Destructiva
 ;; Clasificación: Función de cálculo de duración de ciclo semafórico
 ;; ------------------------------------------------------------
