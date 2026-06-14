@@ -117,7 +117,7 @@
 ;; PROPOSITO: Determinar cuantos ciclos completos de 216 segundos pueden realizarse en un intervalo de tiempo dado.
 ;; =================================================================================================================
 
-(defun crear-ciclos (minutos)
+(defun ciclos-por-tiempo (minutos)
   (floor (/ (* minutos 60) 216))
 )
 
@@ -137,7 +137,7 @@
          (total-segundos (* minutos 60.0))
 
          ;; cantidad de ciclos completos
-         (ciclos (crear-ciclos minutos))
+         (ciclos (ciclos-por-tiempo minutos))
 
          ;; guarda los segundos que sobran despues de los ciclos completos con mod
          (segundos-sobra (mod (* minutos 60) 216))
