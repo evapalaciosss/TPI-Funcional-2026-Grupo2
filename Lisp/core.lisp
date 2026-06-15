@@ -63,7 +63,7 @@
 ;; ======================================================== 
 ;; FUNCION: auditoria-aux
 ;; NATURALEZA: Impura (escribe en pantalla el cambio de estado) 
-;; ESTRATEGIA: Recursividad simple
+;; ESTRATEGIA: Recursividad de cola
 ;; IMPACTO: No destructiva
 ;; ======================================================== 
 (defun auditoria-aux (tiempo limite)    ;;hace la recursividad hasta el limite de 10 min
@@ -83,7 +83,7 @@
                     )
                 )
             )
-            (auditoria-aux (+ tiempo 1) limite)     ;;suma de a un segundo
+            (auditoria-aux (+ tiempo 1) limite)     ;;suma de a un segundo      ;;dando lugar a la recursividad de cola
         )
     )
 )
