@@ -83,7 +83,7 @@
                     )
                 )
             )
-            (auditoria-aux (+ tiempo 1) limite)     ;;salra directamente a la proxima transicion
+            (auditoria-aux (+ tiempo 1) limite)     ;;suma de a un segundo
         )
     )
 )
@@ -383,7 +383,72 @@
 ;;    )
 ;;)
 
+;; ========================================================
+;;                  Fase 2:
+;;            QUICKLISP + LOCAL-TIME
+;; ========================================================
+;;Antes del inicio se debera poner:
 
+;;(ql:quickload "local-time")
+
+;;para cargar la libreria local-time
+
+
+;;Requerimiento 3
+;; ======================================================== 
+;; FUNCION: unix-a-normal
+;; NATURALEZA: Pura 
+;; ESTRATEGIA: 
+;; IMPACTO: No destructiva
+;; ======================================================== 
+;;(defun unix->string (unix-time)
+;;  (local-time:format-timestring               ;;convierte en texto legible
+;;   nil
+;;   (local-time:universal-to-timestamp (+ unix-time 2208988800))   ;;Transforma en formato interno de lisp, y lo hace timestamp de local-time
+;;   :format '(:day "/" :month "/" :year " " :hour ":" :min ":" :sec))
+;;)
+
+
+
+;; ======================================================== 
+;; FUNCION: auditoria
+;; NATURALEZA: Impura (escribe en pantalla el cambio de estado) 
+;; ESTRATEGIA: Seleccion condicional mediante cond
+;; IMPACTO: No destructiva
+;; ======================================================== 
+;;(defun auditoria (unix-time)        ;unix-time es el tiempo epoch
+;;    (auditoria-aux unix-time (+ unix-time 600)) ;;son 10 min en segundos
+;;)
+;;corregi haciendo que muestre en que momento hubo una transicion
+
+
+;; ======================================================== 
+;; FUNCION: auditoria-aux
+;; NATURALEZA: Impura (escribe en pantalla el cambio de estado) 
+;; ESTRATEGIA: Recursividad simple
+;; IMPACTO: No destructiva
+;; ======================================================== 
+;;(defun auditoria-aux (tiempo limite)    ;;hace la recursividad hasta el limite de 10 min
+;;    (cond 
+;;        ((> tiempo limite) NIL)
+;;        (t
+;;            (let ((resto (mod tiempo 216)))
+;;                (cond
+;;                    ((= resto 0)                  ;;si coindice con el tiempo pasado significa que hubo un cambio de una transicion 
+;;                        (format t "Tiempo ~A: La luz a cambiado de amarillo a rojo~%" (unix-a-normal timepo))   ;;llamando la funcion la hace en tiempo legible
+;;                    )
+;;                    ((= resto 90)
+;;                        (format t "Tiempo ~A: La luz a cambiado de rojo a verde~%" (unix-a-normal timepo))
+;;                    )
+;;                    ((= resto 210) 
+;;                        (format t "Tiempo ~A: La luz a cambiado de verde a amarillo~%" (unix-a-normal timepo))
+;;                    )
+;;                )
+;;            )
+;;            (auditoria-aux (+ tiempo 1) limite)     ;;suma de a un segundo.
+;;        )
+;;    )
+;;)
 
 
 
