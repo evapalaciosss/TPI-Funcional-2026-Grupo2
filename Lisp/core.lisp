@@ -52,7 +52,7 @@
 ;; ======================================================== 
 ;; FUNCION: auditoria
 ;; NATURALEZA: Impura (escribe en pantalla el cambio de estado) 
-;; ESTRATEGIA: Seleccion condicional mediante cond
+;; ESTRATEGIA: Delega a funcion "auditoria-aux"
 ;; IMPACTO: No destructiva
 ;; ======================================================== 
 (defun auditoria (unix-time)        ;unix-time es el tiempo epoch
