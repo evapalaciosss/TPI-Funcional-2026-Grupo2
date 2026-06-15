@@ -239,7 +239,7 @@
              (eq cambiar-a 'amarillo))
           (list color-actual
                 'amarillo-intermitente
-                "cambiar-a-amarillo")    
+                "cambiar-a-amarillo"))    
        (t
            (list color-actual
 				'sin-intermitencia                     ;;Incluir esta aclaracion para completar los tres elemwntos de salida (estado - transicion - accion)
