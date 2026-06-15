@@ -318,11 +318,6 @@
 ;;        )
 ;;    )
 ;;)
-
-
-
-
-
 ;; ========================================================
 ;; ITERACION 2 - PERSISTENCIA DE DATOS
 ;; ========================================================
@@ -334,12 +329,12 @@
 ;; IMPACTO: No destructiva
 ;; ========================================================
 
-;;(defun informe (datos)
+;;(defun informe (datos)        ;;los datos son distitas salida de la funcion auditoria
 
 ;;    (with-open-file
 ;;        (stream
 ;;        "informe-ejecucion-semaforo.txt"
-;;        :direction :output)
+;;        :direction :output)       ;;Se creara en la carpeta desde donde esta ejecutandose el lisp
 
 ;;        (format stream
 ;;                "Informe de Ejecucion del Sistema Semaforico~%")
