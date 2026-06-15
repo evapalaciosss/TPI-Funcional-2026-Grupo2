@@ -456,13 +456,13 @@
             (let ((resto (mod tiempo 216)))
                 (cond
                     ((= resto 0)                  ;;si coindice con el tiempo pasado significa que hubo un cambio de una transicion 
-                        (format t "Tiempo ~A: La luz a cambiado de amarillo a rojo~%" (unix-a-normal timepo))   ;;llamando la funcion la hace en tiempo legible
+                        (format t "Tiempo ~A: La luz a cambiado de amarillo a rojo~%" (unix-a-normal tiempo))   ;;llamando la funcion la hace en tiempo legible
                     )
                     ((= resto 90)
-                        (format t "Tiempo ~A: La luz a cambiado de rojo a verde~%" (unix-a-normal timepo))
+                        (format t "Tiempo ~A: La luz a cambiado de rojo a verde~%" (unix-a-normal tiempo))
                     )
                     ((= resto 210) 
-                        (format t "Tiempo ~A: La luz a cambiado de verde a amarillo~%" (unix-a-normal timepo))
+                        (format t "Tiempo ~A: La luz a cambiado de verde a amarillo~%" (unix-a-normal tiempo))
                     )
                 )
             )
