@@ -10,17 +10,17 @@
 
 2. Código del Lenguaje Asignado (Fase 3)
 
-[X] Desarrollo 100% Humano: Aprendí la sintaxis básica, clasifiqué sus componentes y escribí la solución de forma autónoma.
+[ ] Desarrollo 100% Humano: Aprendí la sintaxis básica, clasifiqué sus componentes y escribí la solución de forma autónoma.
 
-[ ] Asistencia de IA: Utilicé la IA para traducir la sintaxis de Lisp al nuevo lenguaje o entender los errores del compilador ajeno.
+[X] Asistencia de IA: Utilicé la IA para traducir la sintaxis de Lisp al nuevo lenguaje o entender los errores del compilador ajeno.
 
 [ ] Generación Completa por IA: La IA realizó la traducción automática de las funciones transicion y timer.
 
 3. Redacción del Informe y Respuestas Teóricas
 
-[X] Autoría Propia: Las explicaciones de los conceptos de los lenguajes y el análisis comparativo reflejan nuestras propias conclusiones conceptuales.
+[ ] Autoría Propia: Las explicaciones de los conceptos de los lenguajes y el análisis comparativo reflejan nuestras propias conclusiones conceptuales.
 
-[ ] Redacción Asistida / Generada: La IA redactó o fundamentó las respuestas teóricas basadas en prompts conceptuales proporcionados por el grupo.
+[X] Redacción Asistida / Generada: La IA redactó o fundamentó las respuestas teóricas basadas en prompts conceptuales proporcionados por el grupo.
 
 [ ] Generación completa por IA
 
