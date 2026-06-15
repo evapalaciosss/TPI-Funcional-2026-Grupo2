@@ -198,40 +198,38 @@
 ;; IMPACTO: No destructiva
 ;; ========================================================
 
-;;(defun transicion (color-actual cambiar-a)
+(defun transicion (color-actual cambiar-a)
+   (cond
 
-;;    (cond
+       ((and (eq color-actual 'en-rojo)
+            (eq cambiar-a 'verde))
 
-;;        ((and (eq color-actual 'en-rojo)
-;;              (eq cambiar-a 'verde))
+          (list color-actual
+                 'amarillo-intermitente
+                 'cambiar-a-verde)
+       )
+       ((and (eq color-actual 'en-verde)
+             (eq cambiar-a 'amarillo))
 
-;;          (list color-actual
-;;                  'amarillo-intermitente
-;;                  'cambiar-a-verde)
-;;        )
+             (list color-actual
+                 'amarillo-intermitente
+				   'cambiar-a-amarillo)
+       )
 
-;;        ((and (eq color-actual 'en-verde)
-;;              (eq cambiar-a 'amarillo))
+        ((and (eq color-actual 'en-amarillo)
+			  (eq cambiar-a 'rojo))
 
-;;            (list color-actual
-;;                  'amarillo-intermitente
-;;                  'cambiar-a-amarillo)
-;;        )
+            (list color-actual
+                  'amarillo-intermitente
+                  'cambiar-a-rojo)
+        )
 
-;;        ((and (eq color-actual 'en-amarillo)
-;;              (eq cambiar-a 'rojo))
-
-;;            (list color-actual
-;;                  'amarillo-intermitente
-;;                  'cambiar-a-rojo)
-;;        )
-
-;;        (t
-;;            (list color-actual
-;;                  'accion-por-defecto)
-;;        )
-;;    )
-;;)
+       (t
+           (list color-actual
+                  'accion-por-defecto)
+       )
+    )
+)
 
 ;; ======================================================== 
 ;; FUNCION: timer
@@ -239,19 +237,19 @@
 ;; ESTRATEGIA: Seleccion condicional
 ;; IMPACTO: No destructiva
 ;; ======================================================== 
-;;(defun timer (unix-time)    ;;unix-time es el tiempo epoch
-;;    (let ((resto (mod unix-time 219)))      ;;coloque un let para evitar la repeticion
-;;        (cond
-;;            ((< resto 90) 'rojo)
-;;            ((< resto 93) 'amarillo-intermitente)
-;;            ((< resto 210) 'verde)  
-;;            ((< resto 216) 'amarillo)
-;;            (t                                          
-;;                'amarillo-intermitente
-;;            )
-;;        )
-;;    )
-;;)
+(defun timer (unix-time)    ;;unix-time es el tiempo epoch
+    (let ((resto (mod unix-time 219)))      ;;coloque un let para evitar la repeticion
+       (cond
+            ((< resto 90) 'rojo)
+           ((< resto 93) 'amarillo-intermitente)
+           ((< resto 210) 'verde)  
+           ((< resto 216) 'amarillo)
+            (t                                          
+                'amarillo-intermitente
+           )
+       )
+   )
+)
 
 ;; ======================================================== 
 ;; FUNCION: auditoria
@@ -260,9 +258,10 @@
 ;; IMPACTO: No destructiva
 ;; ======================================================== 
 
-;;(defun auditoria (unix-time)        ;unix-time es el tiempo epoch
-;;    (auditoria-aux unix-time (+ unix-time 600)) ;;son 10 min en segundos
-;;)
+(defun auditoria (unix-time)        ;unix-time es el tiempo epoch
+    (auditoria-aux unix-time (+ unix-time 600)) ;;son 10 min en segundos
+)
+
 ;;corregi haciendo que muestre en que momento hubo una transicion
 
 ;; ======================================================== 
@@ -271,30 +270,30 @@
 ;; ESTRATEGIA: Recursividad simple
 ;; IMPACTO: No destructiva
 ;; ======================================================== 
-;;(defun auditoria-aux (tiempo limite)    ;;hace la recursividad hasta el limite de 10 min
-;;    (cond 
-;;        ((> tiempo limite) NIL)
-;;        (t
-;;            (let ((resto (mod tiempo 222)))
-;;                (cond
-;;                    ((= resto 0)                  ;;si coindice con el tiempo pasado significa que hubo un cambio de una transicion 
-;;                        (format t "Tiempo ~A: La luz a cambiado de amarillo a rojo~%" tiempo)   
-;;                    )
-;;                    ((= resto 90)
-;;                       (format t "Tiempo ~A: La luz a cambiado de rojo a amarillo~%" tiempo)
-;;                    )
-;;                    ((= resto 93)
-;;                       (format t "Tiempo ~A: La luz a cambiado de amarillo a verde~%" tiempo)
-;;                    )
- ;;                   ((= resto 210) 
-;;                        (format t "Tiempo ~A: La luz a cambiado de verde a amarillo~%" tiempo)
-;;                    )
-;;                )
-;;            )
-;;            (auditoria-aux (+ tiempo 1) limite)     ;;va sumando de a 1 segundo
- ;;       )
-;;    )
-;;)
+(defun auditoria-aux (tiempo limite)    ;;hace la recursividad hasta el limite de 10 min
+    (cond 
+        ((> tiempo limite) NIL)
+        (t
+           (let ((resto (mod tiempo 222)))
+                (cond
+                    ((= resto 0)                  ;;si coindice con el tiempo pasado significa que hubo un cambio de una transicion 
+                       (format t "Tiempo ~A: La luz a cambiado de amarillo a rojo~%" tiempo)   
+                    )
+                    ((= resto 90)
+                       (format t "Tiempo ~A: La luz a cambiado de rojo a amarillo~%" tiempo)
+                    )
+                    ((= resto 93)
+                       (format t "Tiempo ~A: La luz a cambiado de amarillo a verde~%" tiempo)
+                   )
+                    ((= resto 210) 
+                        (format t "Tiempo ~A: La luz a cambiado de verde a amarillo~%" tiempo)
+                    )
+                )
+            )
+            (auditoria-aux (+ tiempo 1) limite)     ;;va sumando de a 1 segundo
+       )
+    )
+)
 ;; ========================================================
 ;; FUNCIÓN: duracion-ciclo
 ;; NATURALEZA: Pura
@@ -302,22 +301,22 @@
 ;; IMPACTO: No destructiva
 ;; ========================================================
 
-;;(defun duracion-ciclo ()
+(defun duracion-ciclo ()
 
-;;    (let (
+    (let (
 
-;;        (rojo 90)
-;;        (verde 120)
-;;        (amarillo 6)
+        (rojo 90)
+        (verde 120)
+        (amarillo 6)
 
         ;; 2 cambios × 3 segundos
-;;        (intermitencia 6)
+        (intermitencia 6)
 
-;;    )
+   )
 
-;;        (+ rojo verde amarillo intermitencia)
-;;    )
-;;)
+        (+ rojo verde amarillo intermitencia)
+    )
+)
 
 
 
@@ -328,33 +327,33 @@
 ;; IMPACTO: No destructiva
 ;; ========================================================
 
-;;(defun informe-distribucion ()
+(defun informe-distribucion ()
 
-;;    (let (
+    (let (
 
-;;        (total 225)
+        (total 225)
 
-;;        (rojo (/ (* 90 100.0) total))
+        (rojo (/ (* 90 100.0) total))
 
-;;        (verde (/ (* 120 100.0) total))
+        (verde (/ (* 120 100.0) total))
 
-;;        (amarillo (/ (* 6 100.0) total))
+        (amarillo (/ (* 6 100.0) total))
 
-;;        (intermitente (/ (* 9 100.0) total))
-;;    )
+        (intermitente (/ (* 9 100.0) total))
+   )
 
-;;        (list
+        (list
 
-;;            (list 'rojo rojo)
+           (list 'rojo rojo)
 
-;;            (list 'verde verde)
+           (list 'verde verde)
 
-;;            (list 'amarillo amarillo)
+           (list 'amarillo amarillo)
 
-;;            (list 'amarillo-intermitente intermitente)
-;;        )
-;;    )
-;;)
+           (list 'amarillo-intermitente intermitente)
+        )
+    )
+)
 ;; ========================================================
 ;; ITERACION 2 - PERSISTENCIA DE DATOS
 ;; ========================================================
@@ -366,25 +365,25 @@
 ;; IMPACTO: No destructiva
 ;; ========================================================
 
-;;(defun informe (datos)        ;;los datos son distitas salida de la funcion auditoria
+(defun informe (datos)        ;;los datos son distitas salida de la funcion auditoria
 
-;;    (with-open-file
-;;        (stream
-;;        "informe-ejecucion-semaforo.txt"
-;;        :direction :output)       ;;Se creara en la carpeta desde donde esta ejecutandose el lisp
+    (with-open-file
+        (stream
+        "informe-ejecucion-semaforo.txt"
+        :direction :output)       ;;Se creara en la carpeta desde donde esta ejecutandose el lisp
 
-;;        (format stream
-;;                "Informe de Ejecucion del Sistema Semaforico~%")
+        (format stream
+                "Informe de Ejecucion del Sistema Semaforico~%")
 
-;;        (format stream
-;;                "=======================================~%")
+        (format stream
+                "=======================================~%")
 
-;;        (format stream "~A~%" datos)
+        (format stream "~A~%" datos)
 
-;;        (format stream
-;;                "~%--- Fin del Informe ---")
-;;    )
-;;)
+        (format stream
+                "~%--- Fin del Informe ---")
+    )
+)
 
 ;; ========================================================
 ;;                  Fase 2:
@@ -404,12 +403,12 @@
 ;; ESTRATEGIA: 
 ;; IMPACTO: No destructiva
 ;; ======================================================== 
-;;(defun unix->string (unix-time)
-;;  (local-time:format-timestring               ;;convierte en texto legible
-;;   nil
-;;   (local-time:universal-to-timestamp (+ unix-time 2208988800))   ;;Transforma en formato interno de lisp, y lo hace timestamp de local-time
-;;   :format '(:day "/" :month "/" :year " " :hour ":" :min ":" :sec))
-;;)
+(defun unix->string (unix-time)
+  (local-time:format-timestring               ;;convierte en texto legible
+   nil
+   (local-time:universal-to-timestamp (+ unix-time 2208988800))   ;;Transforma en formato interno de lisp, y lo hace timestamp de local-time
+   :format '(:day "/" :month "/" :year " " :hour ":" :min ":" :sec))
+)
 
 
 
@@ -419,9 +418,9 @@
 ;; ESTRATEGIA: Seleccion condicional mediante cond
 ;; IMPACTO: No destructiva
 ;; ======================================================== 
-;;(defun auditoria (unix-time)        ;unix-time es el tiempo epoch
-;;    (auditoria-aux unix-time (+ unix-time 600)) ;;son 10 min en segundos
-;;)
+(defun auditoria (unix-time)        ;unix-time es el tiempo epoch
+    (auditoria-aux unix-time (+ unix-time 600)) ;;son 10 min en segundos
+)
 ;;corregi haciendo que muestre en que momento hubo una transicion
 
 
@@ -431,27 +430,27 @@
 ;; ESTRATEGIA: Recursividad simple
 ;; IMPACTO: No destructiva
 ;; ======================================================== 
-;;(defun auditoria-aux (tiempo limite)    ;;hace la recursividad hasta el limite de 10 min
-;;    (cond 
-;;        ((> tiempo limite) NIL)
-;;        (t
-;;            (let ((resto (mod tiempo 216)))
-;;                (cond
-;;                    ((= resto 0)                  ;;si coindice con el tiempo pasado significa que hubo un cambio de una transicion 
-;;                        (format t "Tiempo ~A: La luz a cambiado de amarillo a rojo~%" (unix-a-normal timepo))   ;;llamando la funcion la hace en tiempo legible
-;;                    )
-;;                    ((= resto 90)
-;;                        (format t "Tiempo ~A: La luz a cambiado de rojo a verde~%" (unix-a-normal timepo))
-;;                    )
-;;                    ((= resto 210) 
-;;                        (format t "Tiempo ~A: La luz a cambiado de verde a amarillo~%" (unix-a-normal timepo))
-;;                    )
-;;                )
-;;            )
-;;            (auditoria-aux (+ tiempo 1) limite)     ;;suma de a un segundo.
-;;        )
-;;    )
-;;)
+(defun auditoria-aux (tiempo limite)    ;;hace la recursividad hasta el limite de 10 min
+    (cond 
+        ((> tiempo limite) NIL)
+        (t
+            (let ((resto (mod tiempo 216)))
+                (cond
+                    ((= resto 0)                  ;;si coindice con el tiempo pasado significa que hubo un cambio de una transicion 
+                        (format t "Tiempo ~A: La luz a cambiado de amarillo a rojo~%" (unix-a-normal timepo))   ;;llamando la funcion la hace en tiempo legible
+                    )
+                    ((= resto 90)
+                        (format t "Tiempo ~A: La luz a cambiado de rojo a verde~%" (unix-a-normal timepo))
+                    )
+                    ((= resto 210) 
+                        (format t "Tiempo ~A: La luz a cambiado de verde a amarillo~%" (unix-a-normal timepo))
+                    )
+                )
+            )
+            (auditoria-aux (+ tiempo 1) limite)     ;;suma de a un segundo.
+        )
+    )
+)
 
 
 
