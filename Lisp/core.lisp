@@ -255,12 +255,14 @@
 ;; IMPACTO: No destructiva
 ;; ======================================================== 
 (defun timer (unix-time)    ;;unix-time es el tiempo epoch
-    (let ((resto (mod unix-time 219)))      ;;coloque un let para evitar la repeticion
+    (let ((resto (mod unix-time 225)))      ;;coloque un let para evitar la repeticion
        (cond
-            ((< resto 90) 'rojo)
+           ((< resto 90) 'rojo)
            ((< resto 93) 'amarillo-intermitente)
-           ((< resto 210) 'verde)  
-           ((< resto 216) 'amarillo)
+           ((< resto 213) 'verde)
+		   ((< resto 216) 'amarillo-intermitente)
+           ((< resto 222) 'amarillo)
+		   ((< resto 225) 'amarillo-intermitente)
             (t                                          
                 'amarillo-intermitente
            )
