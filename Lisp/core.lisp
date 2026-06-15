@@ -73,13 +73,13 @@
             (let ((resto (mod tiempo 216)))
                 (cond
                     ((= resto 0)                  ;;si coindice con el tiempo pasado significa que hubo un cambio de una transicion 
-                        (format t "Tiempo ~A: La luz a cambiado de amarillo a rojo" tiempo)   
+                        (format t "Tiempo ~A: La luz a cambiado de amarillo a rojo~%" tiempo)   
                     )
                     ((= resto 90)
-                        (format t "Tiempo ~A: La luz a cambiado de rojo a verde" tiempo)
+                        (format t "Tiempo ~A: La luz a cambiado de rojo a verde~%" tiempo)
                     )
                     ((= resto 210) 
-                        (format t "Tiempo ~A: La luz a cambiado de verde a amarillo" tiempo)
+                        (format t "Tiempo ~A: La luz a cambiado de verde a amarillo~%" tiempo)
                     )
                 )
             )
