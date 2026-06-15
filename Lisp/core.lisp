@@ -237,7 +237,27 @@
 ;;        )
 ;;    )
 ;;)
-
+;; ======================================================== 
+;; FUNCION: auditoria
+;; NATURALEZA: Impura (escribe en pantalla el cambio de estado) 
+;; ESTRATEGIA: Seleccion condicional mediante cond
+;; IMPACTO: No destructiva
+;; ======================================================== 
+;;(defun auditoria (unix-time)        ;unix-time es el tiempo epoch
+;;    (let ((resto (mod unix-time 219)))
+;;        (cond
+;;            ((= resto 0)                  ;;si coindice con el tiempo pasado significa que hubo un cambio de una transicion 
+;;                (format t "Tiempo ~A: La luz a cambiado de amarillo a rojo" unix-time)   
+;;            )
+;;            ((= resto 90)
+;;                (format t "Tiempo ~A: La luz a cambiado de rojo a verde" unix-time)
+;;            )
+;;            ((= resto 210) 
+;;                (format t "Tiempo ~A: La luz a cambiado de verde a amarillo" unix-time)
+;;            )
+;;        )
+;;    )
+;;)
 ;; ========================================================
 ;; FUNCIÓN: duracion-ciclo
 ;; NATURALEZA: Pura
