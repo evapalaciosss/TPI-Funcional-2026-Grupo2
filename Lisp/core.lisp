@@ -218,7 +218,25 @@
 ;;    )
 ;;)
 
-
+;; ======================================================== 
+;; FUNCION: timer
+;; NATURALEZA:  Pura (no devuelve nada en pantalla)
+;; ESTRATEGIA: Seleccion condicional
+;; IMPACTO: No destructiva
+;; ======================================================== 
+;;(defun timer (unix-time)    ;;unix-time es el tiempo epoch
+;;    (let ((resto (mod unix-time 219)))      ;;coloque un let para evitar la repeticion
+;;        (cond
+;;            ((< resto 90) 'rojo)
+;;            ((< resto 93) 'amarillo-intermitente)
+;;            ((< resto 210) 'verde)  
+;;            ((< resto 216) 'amarillo)
+;;            (t                                          
+;;                'amarillo-intermitente
+;;            )
+;;        )
+;;    )
+;;)
 
 ;; ========================================================
 ;; FUNCIÓN: duracion-ciclo
