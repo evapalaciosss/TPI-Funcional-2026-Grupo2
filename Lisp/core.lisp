@@ -422,7 +422,7 @@
 ;; ESTRATEGIA: 
 ;; IMPACTO: No destructiva
 ;; ======================================================== 
-(defun unix->string (unix-time)
+(defun unix-a-normal (unix-time)
   (local-time:format-timestring               ;;convierte en texto legible
    nil
    (local-time:universal-to-timestamp (+ unix-time 2208988800))   ;;Transforma en formato interno de lisp, y lo hace timestamp de local-time
