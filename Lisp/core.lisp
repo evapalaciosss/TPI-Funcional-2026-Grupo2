@@ -44,7 +44,6 @@
     )
 )
 ;;del 0 al 89 segundos va a ser rojo, de 90 al 209 va a ser verde y del 210 al 215 va a ser amarillo
-;;del 0 al 89 segundos va a ser rojo, de 90 al 209 va a ser verde y del 210 al 215 va a ser amarillo
 ;;la intencion es dejar en caso de que no sea ni menor o igual a 89, ni mayor o igual a 210
 ;;asi simplemente queda ese intervalo de segundos en medio para el verde, quedando en el ultimo cond
 
@@ -60,6 +59,7 @@
     (auditoria-aux unix-time (+ unix-time 600)) ;;son 10 min en segundos
 )
 ;;corregi haciendo que muestre en que momento hubo una transicion
+
 ;; ======================================================== 
 ;; FUNCION: auditoria-aux
 ;; NATURALEZA: Impura (escribe en pantalla el cambio de estado) 
@@ -252,16 +252,19 @@
 ;;        )
 ;;    )
 ;;)
+
 ;; ======================================================== 
 ;; FUNCION: auditoria
 ;; NATURALEZA: Impura (escribe en pantalla el cambio de estado) 
 ;; ESTRATEGIA: Seleccion condicional mediante cond
 ;; IMPACTO: No destructiva
 ;; ======================================================== 
+
 ;;(defun auditoria (unix-time)        ;unix-time es el tiempo epoch
 ;;    (auditoria-aux unix-time (+ unix-time 600)) ;;son 10 min en segundos
 ;;)
 ;;corregi haciendo que muestre en que momento hubo una transicion
+
 ;; ======================================================== 
 ;; FUNCION: auditoria-aux
 ;; NATURALEZA: Impura (escribe en pantalla el cambio de estado) 
