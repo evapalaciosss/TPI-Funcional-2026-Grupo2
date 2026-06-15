@@ -172,3 +172,151 @@
        (format t "Porcentaje Verde: ~,2F%~%" porcentaje-verde)
        (format t "Porcentaje Amarillo: ~,2F%~%" porcentaje-amarillo))))
 
+;; ========================================================
+;; ITERACION 1 - INTERMITENCIA DE SEGURIDAD
+;; ========================================================
+
+;; ========================================================
+;; FUNCIÓN: transicion
+;; NATURALEZA: Pura
+;; ESTRATEGIA: Seleccion condicional mediante cond
+;; IMPACTO: No destructiva
+;; ========================================================
+
+(defun transicion (color-actual cambiar-a)
+
+    (cond
+
+        ((and (eq color-actual 'en-rojo)
+              (eq cambiar-a 'verde))
+
+            (list color-actual
+                  'amarillo-intermitente
+                  'cambiar-a-verde)
+        )
+
+        ((and (eq color-actual 'en-verde)
+              (eq cambiar-a 'amarillo))
+
+            (list color-actual
+                  'amarillo-intermitente
+                  'cambiar-a-amarillo)
+        )
+
+        ((and (eq color-actual 'en-amarillo)
+              (eq cambiar-a 'rojo))
+
+            (list color-actual
+                  'amarillo-intermitente
+                  'cambiar-a-rojo)
+        )
+
+        (t
+            (list color-actual
+                  'accion-por-defecto)
+        )
+    )
+)
+
+
+
+;; ========================================================
+;; FUNCIÓN: duracion-ciclo
+;; NATURALEZA: Pura
+;; ESTRATEGIA: Calculo directo
+;; IMPACTO: No destructiva
+;; ========================================================
+
+(defun duracion-ciclo ()
+
+    (let (
+
+        (rojo 90)
+        (verde 120)
+        (amarillo 6)
+
+        ;; 3 cambios × 3 segundos
+        (intermitencia 9)
+
+    )
+
+        (+ rojo verde amarillo intermitencia)
+    )
+)
+
+
+
+;; ========================================================
+;; FUNCIÓN: informe-distribucion
+;; NATURALEZA: Pura
+;; ESTRATEGIA: Calculo porcentual
+;; IMPACTO: No destructiva
+;; ========================================================
+
+(defun informe-distribucion ()
+
+    (let (
+
+        (total 225)
+
+        (rojo (/ (* 90 100.0) total))
+
+        (verde (/ (* 120 100.0) total))
+
+        (amarillo (/ (* 6 100.0) total))
+
+        (intermitente (/ (* 9 100.0) total))
+    )
+
+        (list
+
+            (list 'rojo rojo)
+
+            (list 'verde verde)
+
+            (list 'amarillo amarillo)
+
+            (list 'amarillo-intermitente intermitente)
+        )
+    )
+)
+
+
+
+
+
+;; ========================================================
+;; ITERACION 2 - PERSISTENCIA DE DATOS
+;; ========================================================
+
+;; ========================================================
+;; FUNCIÓN: informe
+;; NATURALEZA: Impura (escribe archivo)
+;; ESTRATEGIA: Escritura mediante with-open-file
+;; IMPACTO: No destructiva
+;; ========================================================
+
+(defun informe (datos)
+
+    (with-open-file
+        (stream
+        "informe-ejecucion-semaforo.txt"
+        :direction :output)
+
+        (format stream
+                "Informe de Ejecucion del Sistema Semaforico~%")
+
+        (format stream
+                "=======================================~%")
+
+        (format stream "~A~%" datos)
+
+        (format stream
+                "~%--- Fin del Informe ---")
+    )
+)
+
+
+
+
+
