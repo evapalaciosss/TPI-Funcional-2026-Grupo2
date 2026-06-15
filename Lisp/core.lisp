@@ -121,7 +121,7 @@
   (floor (/ (* minutos 60) 216))
 )
 
-;;Requerimiento 6
+;;Requerimiento N°6
 
 ;; ===================================================================================================================================
 ;; FUNCIÓN: informe-distribucion
@@ -132,42 +132,46 @@
 ;; ===================================================================================================================================
 
 (defun informe-distribucion (minutos)
-  (let* (
-         ;; convertimos los minutos a segundos
-         (total-segundos (* minutos 60.0))
+  ;; hacemos una validacion para evitar errores de calculo
+  (if (or (not (numberp minutos)) (<= minutos 0))
+      (format t "~%La cantidad de minutos debe ser mayor a 0.~%")
+      ;; usamos let* para que se evalue linea por linea y no todo el bloque al mismo tiempo
+      (let* (
+             ;; convertimos los minutos a segundos
+             (total-segundos (* minutos 60.0))
 
-         ;; cantidad de ciclos completos
-         (ciclos (ciclos-por-tiempo minutos))
+             ;; calculamos la cantidad de ciclos completos usando la funcion del Requerimiento 5
+             (ciclos (ciclos-por-tiempo minutos))
 
-         ;; guarda los segundos que sobran despues de los ciclos completos con mod
-         (segundos-sobra (mod (* minutos 60) 216))
+             ;; guarda los segundos que sobran despues de los ciclos completos con mod
+             (segundos-sobra (mod (* minutos 60) 216))
 
-         ;; el rojo usa 90 segundos del sobrante
-         ;; min agarra el valor mas chico, para qu si sobra menos de 90 lo agarre todo, y si sobra mas, que solo agarre 90
-         (sobra-rojo (min segundos-sobra 90))
+             ;; el rojo usa 90 segundos del sobrante
+             ;; min agarra el valor mas chico, para qu si sobra menos de 90 lo agarre todo, y si sobra mas, que solo agarre 90
+             (sobra-rojo (min segundos-sobra 90))
 
-         ;; restamos el tiempo usado por el rojo para darle sobrante al verde
-         ;; max agarra el valor mas grande para asegurarnos de que no agarre un numero en negativo en caso de que ya no sobre nada
-         (sobra-verde (min (max 0 (- segundos-sobra 90)) 120))
+             ;; restamos el tiempo usado por el rojo para darle sobrante al verde
+             ;; max agarra el valor mas grande para asegurarnos de que no agarre un numero en negativo en caso de que ya no sobre nada
+             (sobra-verde (min (max 0 (- segundos-sobra 90)) 120))
 
-         ;; al sobrante le restamos el tiempo que usaron el rojo y el verde
-         (sobra-amarillo (max 0 (- segundos-sobra 210)))
+             ;; al sobrante le restamos el tiempo que usaron el rojo y el verde
+             (sobra-amarillo (max 0 (- segundos-sobra 210)))
 
-         ;; calculamos los segundos totales de cada color
-         (segundos-rojo (+ (* ciclos 90) sobra-rojo))
-         (segundos-verde (+ (* ciclos 120) sobra-verde))
-         (segundos-amarillo (+ (* ciclos 6) sobra-amarillo))
+             ;; calculamos los segundos totales de cada color
+             (segundos-rojo (+ (* ciclos 90) sobra-rojo))
+             (segundos-verde (+ (* ciclos 120) sobra-verde))
+             (segundos-amarillo (+ (* ciclos 6) sobra-amarillo))
 
-         ;; calculamos los porcentajes
-         (porcentaje-rojo (* (/ segundos-rojo total-segundos) 100))
-         (porcentaje-verde (* (/ segundos-verde total-segundos) 100))
-         (porcentaje-amarillo (* (/ segundos-amarillo total-segundos) 100)))
+             ;; calculamos los porcentajes
+             (porcentaje-rojo (* (/ segundos-rojo total-segundos) 100))
+             (porcentaje-verde (* (/ segundos-verde total-segundos) 100))
+             (porcentaje-amarillo (* (/ segundos-amarillo total-segundos) 100)))
 
-    ;; mostramos
-    (format t "~%Informe de Distribución Temporal (~A minutos):~%~%" minutos)
-    (format t "Porcentaje Rojo: ~,2F%~%" porcentaje-rojo)
-    (format t "Porcentaje Verde: ~,2F%~%" porcentaje-verde)
-    (format t "Porcentaje Amarillo: ~,2F%~%" porcentaje-amarillo)))
+       ;; mostramos
+       (format t "~%Informe de Distribución Temporal (~A minutos):~%~%" minutos)
+       (format t "Porcentaje Rojo: ~,2F%~%" porcentaje-rojo)
+       (format t "Porcentaje Verde: ~,2F%~%" porcentaje-verde)
+       (format t "Porcentaje Amarillo: ~,2F%~%" porcentaje-amarillo))))
 
 ;; Casos de prueba:                    Resultado esperado:
 ;; (informe-distribucion 1)            Rojo=100.00%, Verde=0.00%, Amarillo=0.00%
