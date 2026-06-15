@@ -84,7 +84,7 @@
 
 ;;la logica aqui consta en ingresar los segundos de cada color del semaforo rojo,amarillo y verde, en base a esos datos sumar el ciclo del mismo para saber la duracion del mismo
 (defun duracion-ciclo (Seg-rojo Seg-amarillo Seg-verde)
-   (+ Seg-rojo Seg-amarillo Seg-verde Seg-rojo)
+   (+ Seg-rojo Seg-amarillo Seg-verde)
 )
 
 ;;Requerimiento 4 b)
