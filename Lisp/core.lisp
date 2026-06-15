@@ -173,9 +173,3 @@
        (format t "Porcentaje Verde: ~,2F%~%" porcentaje-verde)
        (format t "Porcentaje Amarillo: ~,2F%~%" porcentaje-amarillo))))
 
-;; Casos de prueba:                    Resultado esperado:
-;; (informe-distribucion 1)            Rojo=100.00%, Verde=0.00%, Amarillo=0.00%
-;; (informe-distribucion 2)            Rojo=75.00%, Verde=25.00%, Amarillo=0.00%
-;; (informe-distribucion 15)           Rojo=44.00%, Verde=53.33%, Amarillo=2.67%
-;; (informe-distribucion 30)           Rojo=44.00%, Verde=53.33%, Amarillo=2.67%
-;; (informe-distribucion 60)           Rojo=42.50%, Verde=54.83%, Amarillo=2.67%
