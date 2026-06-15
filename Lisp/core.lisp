@@ -273,8 +273,8 @@
 ;;        (verde 120)
 ;;        (amarillo 6)
 
-        ;; 3 cambios × 3 segundos
-;;        (intermitencia 9)
+        ;; 2 cambios × 3 segundos
+;;        (intermitencia 6)
 
 ;;    )
 
