@@ -183,40 +183,40 @@
 ;; IMPACTO: No destructiva
 ;; ========================================================
 
-(defun transicion (color-actual cambiar-a)
+;;(defun transicion (color-actual cambiar-a)
 
-    (cond
+;;    (cond
 
-        ((and (eq color-actual 'en-rojo)
-              (eq cambiar-a 'verde))
+;;        ((and (eq color-actual 'en-rojo)
+;;              (eq cambiar-a 'verde))
 
-            (list color-actual
-                  'amarillo-intermitente
-                  'cambiar-a-verde)
-        )
+;;          (list color-actual
+;;                  'amarillo-intermitente
+;;                  'cambiar-a-verde)
+;;        )
 
-        ((and (eq color-actual 'en-verde)
-              (eq cambiar-a 'amarillo))
+;;        ((and (eq color-actual 'en-verde)
+;;              (eq cambiar-a 'amarillo))
 
-            (list color-actual
-                  'amarillo-intermitente
-                  'cambiar-a-amarillo)
-        )
+;;            (list color-actual
+;;                  'amarillo-intermitente
+;;                  'cambiar-a-amarillo)
+;;        )
 
-        ((and (eq color-actual 'en-amarillo)
-              (eq cambiar-a 'rojo))
+;;        ((and (eq color-actual 'en-amarillo)
+;;              (eq cambiar-a 'rojo))
 
-            (list color-actual
-                  'amarillo-intermitente
-                  'cambiar-a-rojo)
-        )
+;;            (list color-actual
+;;                  'amarillo-intermitente
+;;                  'cambiar-a-rojo)
+;;        )
 
-        (t
-            (list color-actual
-                  'accion-por-defecto)
-        )
-    )
-)
+;;        (t
+;;            (list color-actual
+;;                  'accion-por-defecto)
+;;        )
+;;    )
+;;)
 
 
 
@@ -227,22 +227,22 @@
 ;; IMPACTO: No destructiva
 ;; ========================================================
 
-(defun duracion-ciclo ()
+;;(defun duracion-ciclo ()
 
-    (let (
+;;    (let (
 
-        (rojo 90)
-        (verde 120)
-        (amarillo 6)
+;;        (rojo 90)
+;;        (verde 120)
+;;        (amarillo 6)
 
         ;; 3 cambios × 3 segundos
-        (intermitencia 9)
+;;        (intermitencia 9)
 
-    )
+;;    )
 
-        (+ rojo verde amarillo intermitencia)
-    )
-)
+;;        (+ rojo verde amarillo intermitencia)
+;;    )
+;;)
 
 
 
@@ -253,33 +253,33 @@
 ;; IMPACTO: No destructiva
 ;; ========================================================
 
-(defun informe-distribucion ()
+;;(defun informe-distribucion ()
 
-    (let (
+;;    (let (
 
-        (total 225)
+;;        (total 225)
 
-        (rojo (/ (* 90 100.0) total))
+;;        (rojo (/ (* 90 100.0) total))
 
-        (verde (/ (* 120 100.0) total))
+;;        (verde (/ (* 120 100.0) total))
 
-        (amarillo (/ (* 6 100.0) total))
+;;        (amarillo (/ (* 6 100.0) total))
 
-        (intermitente (/ (* 9 100.0) total))
-    )
+;;        (intermitente (/ (* 9 100.0) total))
+;;    )
 
-        (list
+;;        (list
 
-            (list 'rojo rojo)
+;;            (list 'rojo rojo)
 
-            (list 'verde verde)
+;;            (list 'verde verde)
 
-            (list 'amarillo amarillo)
+;;            (list 'amarillo amarillo)
 
-            (list 'amarillo-intermitente intermitente)
-        )
-    )
-)
+;;            (list 'amarillo-intermitente intermitente)
+;;        )
+;;    )
+;;)
 
 
 
@@ -296,25 +296,25 @@
 ;; IMPACTO: No destructiva
 ;; ========================================================
 
-(defun informe (datos)
+;;(defun informe (datos)
 
-    (with-open-file
-        (stream
-        "informe-ejecucion-semaforo.txt"
-        :direction :output)
+;;    (with-open-file
+;;        (stream
+;;        "informe-ejecucion-semaforo.txt"
+;;        :direction :output)
 
-        (format stream
-                "Informe de Ejecucion del Sistema Semaforico~%")
+;;        (format stream
+;;                "Informe de Ejecucion del Sistema Semaforico~%")
 
-        (format stream
-                "=======================================~%")
+;;        (format stream
+;;                "=======================================~%")
 
-        (format stream "~A~%" datos)
+;;        (format stream "~A~%" datos)
 
-        (format stream
-                "~%--- Fin del Informe ---")
-    )
-)
+;;        (format stream
+;;                "~%--- Fin del Informe ---")
+;;    )
+;;)
 
 
 
