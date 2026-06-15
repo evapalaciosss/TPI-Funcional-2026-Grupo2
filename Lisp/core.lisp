@@ -83,29 +83,10 @@
                     )
                 )
             )
-            (auditoria-aux (siguiente-transicion tiempo) limite)     ;;salra directamente a la proxima transicion
+            (auditoria-aux (+ tiempo 1) limite)     ;;salra directamente a la proxima transicion
         )
     )
 )
-
-;; ======================================================== 
-;; FUNCION: siguiente-cambio
-;; NATURALEZA: Pura (no realiza cambios) 
-;; ESTRATEGIA: Seleccion condicional
-;; IMPACTO: No destructiva
-;; ========================================================
-;;El proposito de esta función es saltar directamente al proximo ciclo y evitar muchas llamadas recursivas
-(defun siguiente-transicion (tiempo)
-  (let ((resto (mod tiempo 216)))
-    (cond
-      ((< resto 90) (+ tiempo (- 90 resto)))    ; próximo: rojo→verde
-      ((< resto 210) (+ tiempo (- 210 resto)))  ; próximo: verde→amarillo
-      (t
-        (+ tiempo (- 216 resto))
-      )          ; próximo: vuelta a rojo
-    )
-  )
-) 
 
 ;;Requerimiento 4 a)
 ;; ------------------------------------------------------------
