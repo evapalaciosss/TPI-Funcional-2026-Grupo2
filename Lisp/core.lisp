@@ -206,14 +206,14 @@
 
           (list color-actual
                  'amarillo-intermitente
-                 'cambiar-a-verde)
+                 "cambiar-a-verde")
        )
        ((and (eq color-actual 'en-verde)
              (eq cambiar-a 'amarillo))
 
              (list color-actual
                  'amarillo-intermitente
-				   'cambiar-a-amarillo)
+				 "cambiar-a-amarillo")
        )
 
         ((and (eq color-actual 'en-amarillo)
@@ -221,12 +221,29 @@
 
             (list color-actual
                   'amarillo-intermitente
-                  'cambiar-a-rojo)
+                  "cambiar-a-rojo")
         )
-
+	   ((and (eq color-actual 'amarillo-intermitente)   ;;Se incluye los casos de amarillo intermitente para evitar accion por defecto en casos validos
+             (eq cambiar-a 'verde))                     
+          (list color-actual
+                'amarillo-intermitente
+                "cambiar-a-verde")
+       )
+       ((and (eq color-actual 'amarillo-intermitente)
+             (eq cambiar-a 'rojo))
+          (list color-actual
+                'amarillo-intermitente
+                "cambiar-a-rojo")
+       )
+       ((and (eq color-actual 'amarillo-intermitente)
+             (eq cambiar-a 'amarillo))
+          (list color-actual
+                'amarillo-intermitente
+                "cambiar-a-amarillo")    
        (t
            (list color-actual
-                  'accion-por-defecto)
+				'sin-intermitencia                     ;;Incluir esta aclaracion para completar los tres elemwntos de salida (estado - transicion - accion)
+                'accion-por-defecto)
        )
     )
 )
