@@ -259,18 +259,37 @@
 ;; IMPACTO: No destructiva
 ;; ======================================================== 
 ;;(defun auditoria (unix-time)        ;unix-time es el tiempo epoch
-;;    (let ((resto (mod unix-time 219)))
-;;        (cond
-;;            ((= resto 0)                  ;;si coindice con el tiempo pasado significa que hubo un cambio de una transicion 
-;;                (format t "Tiempo ~A: La luz a cambiado de amarillo a rojo" unix-time)   
+;;    (auditoria-aux unix-time (+ unix-time 600)) ;;son 10 min en segundos
+;;)
+;;corregi haciendo que muestre en que momento hubo una transicion
+;; ======================================================== 
+;; FUNCION: auditoria-aux
+;; NATURALEZA: Impura (escribe en pantalla el cambio de estado) 
+;; ESTRATEGIA: Recursividad simple
+;; IMPACTO: No destructiva
+;; ======================================================== 
+;;(defun auditoria-aux (tiempo limite)    ;;hace la recursividad hasta el limite de 10 min
+;;    (cond 
+;;        ((> tiempo limite) NIL)
+;;        (t
+;;            (let ((resto (mod tiempo 222)))
+;;                (cond
+;;                    ((= resto 0)                  ;;si coindice con el tiempo pasado significa que hubo un cambio de una transicion 
+;;                        (format t "Tiempo ~A: La luz a cambiado de amarillo a rojo~%" tiempo)   
+;;                    )
+;;                    ((= resto 90)
+;;                       (format t "Tiempo ~A: La luz a cambiado de rojo a amarillo~%" tiempo)
+;;                    )
+;;                    ((= resto 93)
+;;                       (format t "Tiempo ~A: La luz a cambiado de amarillo a verde~%" tiempo)
+;;                    )
+ ;;                   ((= resto 210) 
+;;                        (format t "Tiempo ~A: La luz a cambiado de verde a amarillo~%" tiempo)
+;;                    )
+;;                )
 ;;            )
-;;            ((= resto 90)
-;;                (format t "Tiempo ~A: La luz a cambiado de rojo a verde" unix-time)
-;;            )
-;;            ((= resto 210) 
-;;                (format t "Tiempo ~A: La luz a cambiado de verde a amarillo" unix-time)
-;;            )
-;;        )
+;;            (auditoria-aux (+ tiempo 1) limite)     ;;va sumando de a 1 segundo
+ ;;       )
 ;;    )
 ;;)
 ;; ========================================================
