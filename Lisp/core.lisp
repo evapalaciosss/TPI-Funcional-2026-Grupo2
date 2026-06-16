@@ -61,12 +61,7 @@
 ;;asi simplemente queda ese intervalo de segundos en medio para el verde, quedando en el ultimo cond
 
 ;;Requerimiento 3 con iteracion 2, y fase 2
-; ==================================================== 
-;; FUNCION: unix-a-normal
-;; NATURALEZA: Pura 
-;; ESTRATEGIA: Transformacion aritmetica
-;; IMPACTO: No destructiva
-;; ======================================================== 
+; =========================================================
 ;;            QUICKLISP + LOCAL-TIME
 ;; ========================================================
 ;;Antes del inicio se debera poner:
@@ -74,7 +69,13 @@
 ;;(ql:quickload "local-time")
 
 ;;para cargar la libreria local-time
-
+; ========================================================= 
+;; FUNCION: unix-a-normal
+;; NATURALEZA: Pura 
+;; ESTRATEGIA: Transformacion aritmetica
+;; IMPACTO: No destructiva
+;; ========================================================
+ 
 (defun unix-a-normal (unix-time)
   (local-time:format-timestring               ;;convierte en texto legible
    nil
