@@ -2,27 +2,21 @@
 # TRABAJO PRACTICO INTEGRADOR 2026 - Sistema de Semáforos y Análisis Comparativo de Paradigmas
 ### 💻 Paradigmas y Lenguajes de Programación 
 
-------------------------------------------------------------------------------
-
+---------------------------------------------------------------------------------------------
 ## 👥 Integrantes - Grupo N°2
 * **Caraballo, Ivan Jeremias      - GitHub:  
 * **Castillo, Gonzalo Uriel       - GitHub: 
 * **Escalante, Enzo Leonel        - GitHub: 
 * **Gómez, Jonathan Daniel        - GitHub: 
 * **Palacios, Evangelina Victoria - GitHub:  
-
+---------------------------------------------------------------------------------------------
 
 🎥 **Enlace a la Defensa Técnica (YouTube):** link al Video
 
-------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------
 
 ## 📝 Descripción del Proyecto
-Este proyecto consiste en el diseño y modelado del núcleo lógico para un **Sistema de Semáforos Inteligentes** destinado al control del tráfico urbano. El desarrollo está estructurado bajo el **Paradigma Funcional puro**, aplicando conceptos como la inmutabilidad absoluta, funciones puras, composición funcional y recursividad de cola. 
-
-El trabajo incluye el núcleo en **Common Lisp**, una implementación comparativa en un segundo lenguaje funcional asignado (**Clojure**).
-
-
-
+Este proyecto consiste en el diseño y modelado del núcleo lógico para un **Sistema de Semáforos Inteligentes** destinado al control del tráfico urbano. El desarrollo está estructurado bajo el **Paradigma Funcional puro**, aplicando conceptos como la inmutabilidad absoluta, funciones puras, composición funcional y recursividad de cola. El trabajo incluye el núcleo en **Common Lisp**, una implementación comparativa en un segundo lenguaje funcional asignado (**Clojure**).
 
 
 
