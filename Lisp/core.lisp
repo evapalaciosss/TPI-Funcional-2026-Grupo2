@@ -137,12 +137,13 @@
 ;; ------------------------------------------------------------
 ;; Función: duracion-ciclo
 ;; Naturaleza: Pura (sin efectos secundarios)
-;; Estrategia de Control: Aritmética simple (suma directa de fases)
+;; Estrategia de Control: Aritmética 
 ;; Impacto en Memoria: No Destructiva
 ;; Clasificación: Función de cálculo de duración de ciclo semafórico
 ;; ------------------------------------------------------------
 
-;;la logica aqui consta en ingresar los segundos de cada color del semaforo rojo,amarillo y verde, en base a esos datos sumar el ciclo del mismo para saber la duracion del mismo
+;;la logica aqui consta en ingresar los segundos de cada color del semaforo rojo,amarillo y verde, luego con los segundos de duracion de la intermitencia se multiplica por 3
+;; el resultado del ultimo se suma con los segundos de color rojo,amarillo y verde para dar asi la duracion del ciclo como se llama la funcion
 (defun duracion-ciclo (Seg-rojo Seg-amarillo Seg-verde Seg-intermitencia)
    (+ Seg-rojo Seg-amarillo Seg-verde (* 3 Seg-intermitencia))
 )
@@ -153,10 +154,10 @@
 ;; Naturaleza: Pura (sin efectos secundarios)
 ;; Estrategia de Control: Condicional Simple (clasificación de valores)
 ;; Impacto en Memoria: No Destructiva (devuelve nuevo valor)
-;; Clasificación: Función auxiliar de recomendación sobre duración de ciclo semafórico
+;; Clasificación: Función de recomendación sobre duración de ciclo semafórico
 ;; ------------------------------------------------------------
 
-;;total es la suma de segundos del ciclo de semaforo en rojo,amarillo,verde,rojo definida en la funcion duracion-ciclo
+;;total es la duracion ingresada como parametro, del ciclo del semaforo y en base a eso recomienda si el ciclo ingresado por parametro es el mas adecuado o no con mensajes
 
 (defun recomendacion-ciclo (total) 
   (cond
