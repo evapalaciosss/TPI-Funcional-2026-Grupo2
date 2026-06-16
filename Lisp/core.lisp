@@ -60,7 +60,7 @@
 ;;la intencion es dejar en caso de que no sea ni menor o igual a 89, ni mayor o igual a 210
 ;;asi simplemente queda ese intervalo de segundos en medio para el verde, quedando en el ultimo cond
 
-;;Requerimiento 3 con iteracion 2, y fase 2
+;;Requerimiento 3 con Iteracion 2 Extencion 1, y fase 2
 ; =========================================================
 ;;            QUICKLISP + LOCAL-TIME
 ;; ========================================================
@@ -69,7 +69,8 @@
 ;;(ql:quickload "local-time")
 
 ;;para cargar la libreria local-time
-; ========================================================= 
+
+;; ========================================================= 
 ;; FUNCION: unix-a-normal
 ;; NATURALEZA: Pura 
 ;; ESTRATEGIA: Transformacion aritmetica
@@ -108,7 +109,7 @@
            (let ((resto (mod tiempo 225)))
                 (cond
                     ((= resto 0)                  ;;si coindice con el tiempo pasado significa que hubo un cambio de una transicion 
-                       (format t "Tiempo ~A: La luz a cambiado de amarillo-intermitente a rojo~%" (unix-a-normal tiempo))   
+                       (format t "Tiempo ~A: La luz a cambiado de rojo-intermitente a rojo~%" (unix-a-normal tiempo))   
                     )
                     ((= resto 90)
                        (format t "Tiempo ~A: La luz a cambiado de rojo a verde-intermitente~%" (unix-a-normal tiempo))
