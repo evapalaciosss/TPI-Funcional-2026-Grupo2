@@ -1,31 +1,28 @@
-# TPI-Funcional-2026-Grupo2
-- Integrantes
 
-Caraballo, Ivan Jeremias
+# TRABAJO PRACTICO INTEGRADOR 2026 - Sistema de Semáforos y Análisis Comparativo de Paradigmas
+### 💻 Paradigmas y Lenguajes de Programación 
 
-Escalante, Enzo Leonel
+------------------------------------------------------------------------------
 
-Castillo, Gonzalo Uriel
-
-Palacios, Evangelina Victoria
-
-
-- Descripicion
-
-El proycto consiste en la simulación de un sistema de semaforos de una ciudad,
-implementado en lenguaje lisp.
-
-- Estructura del trabajo
-
-/Lisp Es el codigo fuente del sistema en el lenguaje Common Lisp.
-
-/Fase-2 Es el mismo codigo fuente del sistema pasado por la libreria "" de Quicklisp.
-
-/Fase-3 Se encuentran las funciones Transicion y Timer en lenguaje Clojure.
-
-/docs En el se encuentra el informe conceptual dl proyecto junto con el codigo de honor
-de cada uno de los integrantes
+## 👥 Integrantes - Grupo N°2
+* **Caraballo, Ivan Jeremias      - GitHub:  
+* **Castillo, Gonzalo Uriel       - GitHub: 
+* **Escalante, Enzo Leonel        - GitHub: 
+* **Gómez, Jonathan Daniel        - GitHub: 
+* **Palacios, Evangelina Victoria - GitHub:  
 
 
-- Enlace a video de Youtube de presentación del proyecto
+🎥 **Enlace a la Defensa Técnica (YouTube):** link al Video
+
+------------------------------------------------------------------------------
+
+## 📝 Descripción del Proyecto
+Este proyecto consiste en el diseño y modelado del núcleo lógico para un **Sistema de Semáforos Inteligentes** destinado al control del tráfico urbano. El desarrollo está estructurado bajo el **Paradigma Funcional puro**, aplicando conceptos como la inmutabilidad absoluta, funciones puras, composición funcional y recursividad de cola. 
+
+El trabajo incluye el núcleo en **Common Lisp**, una implementación comparativa en un segundo lenguaje funcional asignado (**Clojure**).
+
+
+
+
+
 
