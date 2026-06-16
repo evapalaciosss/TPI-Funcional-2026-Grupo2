@@ -133,7 +133,7 @@
     )
 )
 
-;;Requerimiento 4 a) con iteracion 2
+;;Requerimiento 4 a) con Iteracion 2 Extencion 1
 ;; ------------------------------------------------------------
 ;; Función: duracion-ciclo
 ;; Naturaleza: Pura (sin efectos secundarios)
@@ -147,7 +147,7 @@
    (+ Seg-rojo Seg-amarillo Seg-verde (* 3 Seg-intermitencia))
 )
 
-;;Requerimiento 4 b)
+;;Requerimiento 4 b) con Iteracion 2 Extencion 1
 ;; ------------------------------------------------------------
 ;; Función: recomendacion-ciclo
 ;; Naturaleza: Pura (sin efectos secundarios)
