@@ -156,27 +156,27 @@
 )
 
 
-;;Requerimiento N°5
+;;Requerimiento N°5 con Iteracion 2 Extencion 1
 
 ;; =================================================================================================================
-;; FUNCIÓN: crear-ciclos
+;; FUNCIÓN: ciclos-por-tiempo
 ;; NATURALEZA: Pura (Retorna la cantidad de ciclos completos)
 ;; ESTRATEGIA: Transformacion aritmetica (Convierte minutos a segundos y calcula ciclos completos mediante floor)
 ;; IMPACTO: No destructiva (No modifica variables ni estructuras)
-;; PROPOSITO: Determinar cuantos ciclos completos de 216 segundos pueden realizarse en un intervalo de tiempo dado.
+;; PROPOSITO: Determinar cuantos ciclos completos de 225 segundos pueden realizarse en un intervalo de tiempo dado.
 ;; =================================================================================================================
 
 (defun ciclos-por-tiempo (minutos)
-  (floor (* minutos 60) 216))
+  (floor (* minutos 60) 225))
 
-;;Requerimiento N°6
+;;Requerimiento N°6 con Iteracion 2 Extencion 1
 
 ;; ===================================================================================================================================
 ;; FUNCIÓN: informe-distribucion
-;; NATURALEZA: Impura (Además de calcular porcentajes, muestra resultados por pantalla mediante format)
-;; ESTRATEGIA: Calculo directo (Utiliza funciones y operaciones aritmeticas para distribuir el tiempo entre los estados del semaforo)
+;; NATURALEZA: Impura (Ademas de calcular porcentajes, muestra resultados por pantalla mediante format)
+;; ESTRATEGIA: Resta acumulativa (Resta los segundos ya asignados al total sobrante para al siguiente estado)
 ;; IMPACTO: No destructiva (No modifica variables externas ni estructuras de datos)
-;; PROPOSITO: Calcular y mostrar el porcentaje de tiempo que el semaforo permanece en rojo, verde y amarillo
+;; PROPOSITO: Calcular y mostrar los porcentajes, usando el orden: Rojo, Verde-Int, Verde, Amarillo-Int, Amarillo, Rojo-Int
 ;; ===================================================================================================================================
 
 (defun informe-distribucion (minutos)
@@ -187,39 +187,57 @@
       (let* (
              ;; convertimos los minutos a segundos
              (total-segundos (* minutos 60.0))
-
+             
              ;; calculamos la cantidad de ciclos completos usando la funcion del Requerimiento 5
              (ciclos (ciclos-por-tiempo minutos))
-
+             
              ;; guarda los segundos que sobran despues de los ciclos completos con mod
-             (segundos-sobra (mod (* minutos 60) 216))
-
+             (segundos-sobra (mod (* minutos 60) 225))
+             
              ;; el rojo usa 90 segundos del sobrante
              ;; min agarra el valor mas chico, para qu si sobra menos de 90 lo agarre todo, y si sobra mas, que solo agarre 90
              (sobra-rojo (min segundos-sobra 90))
+             
+             ;; restamos el tiempo usado por el anterior estado para darle sobrante al verde intermitente
+             (sobra-verde-inter (min (- segundos-sobra sobra-rojo) 3))
+             
+             ;; restamos el tiempo usado por los anteriores estados para darle sobrante al verde
+             (sobra-verde (min (- segundos-sobra sobra-rojo sobra-verde-inter) 120))
+             
+             ;; restamos el tiempo usado por los anteriores estados para darle sobrante al amarillo intermitente
+             (sobra-amarillo-inter (min (- segundos-sobra sobra-rojo sobra-verde-inter sobra-verde) 3))
+             
+             ;; restamos el tiempo usado por los anteriores estados para darle sobrante al amarillo
+             (sobra-amarillo (min (- segundos-sobra sobra-rojo sobra-verde-inter sobra-verde sobra-amarillo-inter) 6))
+             
+             ;; restamos el tiempo usado por los anteriores estados para darle sobrante al rojo intermitente
+             (sobra-rojo-inter (min (- segundos-sobra sobra-rojo sobra-verde-inter sobra-verde sobra-amarillo-inter sobra-amarillo) 3))
 
-             ;; restamos el tiempo usado por el rojo para darle sobrante al verde
-             ;; max agarra el valor mas grande para asegurarnos de que no agarre un numero en negativo en caso de que ya no sobre nada
-             (sobra-verde (min (max 0 (- segundos-sobra 90)) 120))
-
-             ;; al sobrante le restamos el tiempo que usaron el rojo y el verde
-             (sobra-amarillo (max 0 (- segundos-sobra 210)))
-
-             ;; calculamos los segundos totales de cada color
+             ;; calculamos los segundos totales de cada estado
              (segundos-rojo (+ (* ciclos 90) sobra-rojo))
              (segundos-verde (+ (* ciclos 120) sobra-verde))
              (segundos-amarillo (+ (* ciclos 6) sobra-amarillo))
+             (segundos-verde-inter (+ (* ciclos 3) sobra-verde-inter))
+             (segundos-amarillo-inter (+ (* ciclos 3) sobra-amarillo-inter))
+             (segundos-rojo-inter (+ (* ciclos 3) sobra-rojo-inter))
 
              ;; calculamos los porcentajes
              (porcentaje-rojo (* (/ segundos-rojo total-segundos) 100))
              (porcentaje-verde (* (/ segundos-verde total-segundos) 100))
-             (porcentaje-amarillo (* (/ segundos-amarillo total-segundos) 100)))
+             (porcentaje-amarillo (* (/ segundos-amarillo total-segundos) 100))
+             (porcentaje-verde-inter (* (/ segundos-verde-inter total-segundos) 100))
+             (porcentaje-amarillo-inter (* (/ segundos-amarillo-inter total-segundos) 100))
+             (porcentaje-rojo-inter (* (/ segundos-rojo-inter total-segundos) 100))
+            )
 
-       ;; mostramos
-       (format t "~%Informe de Distribución Temporal (~A minutos):~%~%" minutos)
-       (format t "Porcentaje Rojo: ~,2F%~%" porcentaje-rojo)
-       (format t "Porcentaje Verde: ~,2F%~%" porcentaje-verde)
-       (format t "Porcentaje Amarillo: ~,2F%~%" porcentaje-amarillo))))
+        ;; mostramos los porcentajes
+        (format t "~%Informe de Distribución Temporal (~A minutos):~%~%" minutos)
+        (format t "Porcentaje Rojo: ~,2F%~%" porcentaje-rojo)
+        (format t "Porcentaje Verde Intermitente: ~,2F%~%" porcentaje-verde-inter)
+        (format t "Porcentaje Verde: ~,2F%~%" porcentaje-verde)
+        (format t "Porcentaje Amarillo Intermitente: ~,2F%~%" porcentaje-amarillo-inter)
+        (format t "Porcentaje Amarillo: ~,2F%~%" porcentaje-amarillo)
+        (format t "Porcentaje Rojo Intermitente: ~,2F%~%" porcentaje-rojo-inter))))
 
 ;; ========================================================
 ;; ITERACION 1 - INTERMITENCIA DE SEGURIDAD
