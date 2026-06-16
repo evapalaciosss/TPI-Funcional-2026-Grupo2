@@ -1,4 +1,4 @@
-;;Requerimiento 1 
+;;Requerimiento 1 con Iteracion 2 Extencion 1
 
 ;; ======================================================== 
 ;; FUNCION: transicion
@@ -8,54 +8,32 @@
 ;; ======================================================== 
 
 (defun transicion (color-actual cambiar-a)
-   (cond
-
-       ((and (eq color-actual 'en-rojo)
-            (eq cambiar-a 'verde))
-
-          (list color-actual
-                 'amarillo-intermitente
-                 "cambiar-a-verde")
-       )
-       ((and (eq color-actual 'en-verde)
-             (eq cambiar-a 'amarillo))
-
-             (list color-actual
-                 'amarillo-intermitente
-				 "cambiar-a-amarillo")
-       )
-
-        ((and (eq color-actual 'en-amarillo)
-			  (eq cambiar-a 'rojo))
-
-            (list color-actual
-                  'amarillo-intermitente
-                  "cambiar-a-rojo")
+    (cond
+        ((and (eq color-actual 'en-rojo) (eq cambiar-a 'verde-intermitente))
+            (list color-actual 'Cambiar-a-verde-intermitente)
         )
-	   ((and (eq color-actual 'amarillo-intermitente)   ;;Se incluye los casos de amarillo intermitente para evitar accion por defecto en casos validos
-             (eq cambiar-a 'verde))                     
-          (list color-actual
-                'amarillo-intermitente
-                "cambiar-a-verde")
-       )
-       ((and (eq color-actual 'amarillo-intermitente)
-             (eq cambiar-a 'rojo))
-          (list color-actual
-                'amarillo-intermitente
-                "cambiar-a-rojo")
-       )
-       ((and (eq color-actual 'amarillo-intermitente)
-             (eq cambiar-a 'amarillo))
-          (list color-actual
-                'amarillo-intermitente
-                "cambiar-a-amarillo"))    
-       (t
-           (list color-actual
-				'sin-intermitencia                     ;;Incluir esta aclaracion para completar los tres elemwntos de salida (estado - transicion - accion)
-                'accion-por-defecto)
-       )
+        ((and (eq color-actual 'en-verde-intermitente) (eq cambiar-a 'verde))
+            (list color-actual 'Cambiar-a-verde)
+        )
+        ((and (eq color-actual 'en-verde) (eq cambiar-a 'amarillo-intermitente))
+            (list color-actual 'Cambiar-a-amarillo-intermitente)
+        )
+        ((and (eq color-actual 'en-amarillo-intermitente) (eq cambiar-a 'amarillo))
+            (list color-actual 'Cambiar-a-amarillo)
+        )
+        ((and (eq color-actual 'en-amarillo) (eq cambiar-a 'rojo-intermitente))
+            (list color-actual 'Cambiar-a-rojo-intermitente)
+        )
+        ((and (eq color-actual 'en-rojo-intermitente) (eq cambiar-a 'rojo))
+            (list color-actual 'Cambiar-a-rojo)
+        )
+        (t
+            (list color-actual 'Accion-por-defecto)
+        )                                               
+                                                        
     )
 )
+
 
 
 ;;Requerimiento 2
