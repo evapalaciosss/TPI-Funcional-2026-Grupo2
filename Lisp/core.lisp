@@ -110,7 +110,7 @@
     )
 )
 
-;;Requerimiento 4 a)
+;;Requerimiento 4 a) con iteracion 2
 ;; ------------------------------------------------------------
 ;; Función: duracion-ciclo
 ;; Naturaleza: Pura (sin efectos secundarios)
@@ -120,8 +120,8 @@
 ;; ------------------------------------------------------------
 
 ;;la logica aqui consta en ingresar los segundos de cada color del semaforo rojo,amarillo y verde, en base a esos datos sumar el ciclo del mismo para saber la duracion del mismo
-(defun duracion-ciclo (Seg-rojo Seg-amarillo Seg-verde)
-   (+ Seg-rojo Seg-amarillo Seg-verde)
+(defun duracion-ciclo (Seg-rojo Seg-amarillo Seg-verde Seg-intermitencia)
+   (+ Seg-rojo Seg-amarillo Seg-verde (* 3 Seg-intermitencia))
 )
 
 ;;Requerimiento 4 b)
