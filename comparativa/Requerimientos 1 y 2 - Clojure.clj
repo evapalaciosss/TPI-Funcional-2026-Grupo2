@@ -11,24 +11,33 @@
 
 (defn transicion [color-actual cambiar-a] 
     (cond
-        ((and (= color-actual 'en-rojo) (= cambiar-a 'verde)) 
-             (list color-actual 'Cambiar-a-verde)      
+        ((and (= color-actual 'en-rojo) (= cambiar-a 'verde-intermitente)) 
+             (list color-actual 'Cambiar-a-verde-intermiente)      
         )
-        ((and (= color-actual 'en-verde) (= cambiar-a 'amarillo))
-            (list color-actual 'Cambiar-a-amarilo)
+        ((and (= color-actual 'en-verde-intermiente) (= cambiar-a 'verde))
+            (list color-actual 'Cambiar-a-verde)
         )
-        ((and (= color-actual 'en-amarillo) (= cambiar-a 'rojo))
-            (list color-actual 'Cambiar-a-rojo)
+        ((and (= color-actual 'en-verde) (= cambiar-a 'amarillo-intermiente))
+            (list color-actual 'Cambiar-a-amarillo-intermiente)
+        )
+        ((and (= color-actual 'en-amarillo-intermitente) (= cambiar-a 'amarillo)) 
+             (list color-actual 'Cambiar-a-amarillo)      
+        )
+        ((and (= color-actual 'en-amarillo) (= cambiar-a 'rojo-intermitente)) 
+             (list color-actual 'Cambiar-a-rojo-intermiente)      
+        )
+        ((and (= color-actual 'en-rojo-intermiente) (= cambiar-a 'rojo)) 
+             (list color-actual 'Cambiar-a-rojo)      
         )
         :else      
             (list color-actual 'Accion-por-defecto)
         )
     )
 
-;; Casos Prubea                                  Salida
-;; (transicion 'en-rojo 'verde)                  (en-rojo "cambiar-a-verde")
-;; (transicion 'en-verde 'amarillo)              (en-verde "cambiar-a-amarillo")
-;; (transicion 'en-amarillo 'rojo)               (en-amarillo "cambiar-a-rojo")
+;; Casos Prubea                                             Salida
+;; (transicion 'en-rojo 'verde-intermitente)                  (en-rojo "cambiar-a-verde-intermitente")
+;; (transicion 'en-verde 'amarillo-intermitente)              (en-verde "cambiar-a-amarillo-intermitente")
+;; (transicion 'en-amarillo 'rojo-intermitente)               (en-amarillo "cambiar-a-rojo-intermitente")
 
 ;; Camino Alternativo - transicion invalida      Salida
 ;; (transicion 'en-rojo 'amarillo)               (en-rojo accion-por-defecto)
