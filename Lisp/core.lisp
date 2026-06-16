@@ -60,7 +60,7 @@
 ;;la intencion es dejar en caso de que no sea ni menor o igual a 89, ni mayor o igual a 210
 ;;asi simplemente queda ese intervalo de segundos en medio para el verde, quedando en el ultimo cond
 
-;;Requerimiento 3
+;;Requerimiento 3 con iteracion 2
 
 ;; ======================================================== 
 ;; FUNCION: auditoria
@@ -83,21 +83,30 @@
     (cond 
         ((> tiempo limite) NIL)
         (t
-            (let ((resto (mod tiempo 216)))
+           (let ((resto (mod tiempo 225)))
                 (cond
                     ((= resto 0)                  ;;si coindice con el tiempo pasado significa que hubo un cambio de una transicion 
-                        (format t "Tiempo ~A: La luz a cambiado de amarillo a rojo~%" tiempo)   
+                       (format t "Tiempo ~A: La luz a cambiado de amarillo-intermitente a rojo~%" tiempo)   
                     )
                     ((= resto 90)
-                        (format t "Tiempo ~A: La luz a cambiado de rojo a verde~%" tiempo)
+                       (format t "Tiempo ~A: La luz a cambiado de rojo a verde-intermitente~%" tiempo)
                     )
-                    ((= resto 210) 
-                        (format t "Tiempo ~A: La luz a cambiado de verde a amarillo~%" tiempo)
-                    )
+                    ((= resto 93)
+                       (format t "Tiempo ~A: La luz a cambiado de verde-intermitente a verde~%" tiempo)
+                   )
+                    ((= resto 213) 
+                        (format t "Tiempo ~A: La luz a cambiado de verde a amarillo-intermitente~%" tiempo)
+                   )
+                    ((= resto 216) 
+                        (format t "Tiempo ~A: La luz a cambiado de amarillo-intermitente a amarillo~%" tiempo)
+                   )
+                    ((= resto 222) 
+                        (format t "Tiempo ~A: La luz a cambiado de amarillo a rojo-intermitente ~%" tiempo)
+                   )
                 )
             )
-            (auditoria-aux (+ tiempo 1) limite)     ;;suma de a un segundo      ;;dando lugar a la recursividad de cola
-        )
+            (auditoria-aux (+ tiempo 1) limite)     ;;va sumando de a 1 segundo
+       )
     )
 )
 
