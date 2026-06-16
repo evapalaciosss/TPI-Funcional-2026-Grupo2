@@ -28,6 +28,10 @@ Declaración Jurada: Al subir este archivo al repositorio, declaro bajo compromi
 
 
 
+
+
+
+
 👤 Integrante 2: Enzo Escalante - Usuario GitHub: enzoesc4lante-tech
 
 1. Código en Common Lisp (Fase 1 y 2)
