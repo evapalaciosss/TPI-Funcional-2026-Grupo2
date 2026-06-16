@@ -36,7 +36,7 @@
 
 
 
-;;Requerimiento 2
+;;Requerimiento 2 con Iteracion 2 Extencion 1
 
 ;; ======================================================== 
 ;; FUNCION: timer
@@ -44,14 +44,15 @@
 ;; ESTRATEGIA: Seleccion condicional
 ;; IMPACTO: No destructiva
 ;; ======================================================== 
-(defun timer (unix-time)    ;;unix-time es el tiempo epoch
-    (let ((resto (mod unix-time 216)))      ;;coloque un let para evitar la repeticion
+(defun timer (unix-time)   
+    (let ((resto (mod unix-time 225)))      ;;coloque un let para evitar la repeticion
         (cond
-            ((< resto 90) 'rojo)
-            ((< resto 210) 'verde)  
-            (t                                          
-                'amarillo
-            )
+            ((< resto 90) 'rojo)                         
+            ((< resto 93) 'verde-intermitente)         
+            ((< resto 213) 'verde)                        
+            ((< resto 216) 'amarillo-intermitente)        
+            ((< resto 222) 'amarillo)                     
+            (t 'rojo-intermitente)                        
         )
     )
 )
