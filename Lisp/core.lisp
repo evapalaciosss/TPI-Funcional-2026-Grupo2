@@ -122,18 +122,18 @@
 )
 
 
-;;Requerimiento N°5
+;;Requerimiento N°5 con Iteracion 2 Extencion 1
 
 ;; =================================================================================================================
-;; FUNCIÓN: crear-ciclos
+;; FUNCIÓN: ciclos-por-tiempo
 ;; NATURALEZA: Pura (Retorna la cantidad de ciclos completos)
 ;; ESTRATEGIA: Transformacion aritmetica (Convierte minutos a segundos y calcula ciclos completos mediante floor)
 ;; IMPACTO: No destructiva (No modifica variables ni estructuras)
-;; PROPOSITO: Determinar cuantos ciclos completos de 216 segundos pueden realizarse en un intervalo de tiempo dado.
+;; PROPOSITO: Determinar cuantos ciclos completos de 225 segundos pueden realizarse en un intervalo de tiempo dado.
 ;; =================================================================================================================
 
 (defun ciclos-por-tiempo (minutos)
-  (floor (* minutos 60) 216))
+  (floor (* minutos 60) 225))
 
 ;;Requerimiento N°6 con Iteracion 2 Extencion 1
 
