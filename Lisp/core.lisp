@@ -263,7 +263,6 @@
 ;; ========================================================
 
 (defun informe (datos)        ;;los datos son distitas salida de la funcion auditoria
-
     (with-open-file
         (stream
         "informe-ejecucion-semaforo.txt"
@@ -271,13 +270,16 @@
 
         (format stream
                 "Informe de Ejecucion del Sistema Semaforico~%")
-
-        (format stream
-                "=======================================~%")
-
-        (format stream "~A~%" datos)
-
-        (format stream
-                "~%--- Fin del Informe ---")
-    )
+		(format stream "==========================================")
+        (mapcar (lamda (informacion)
+              (format stream "Tiempo ~A: La luz ha cambiado de ~A a ~A~%"
+                      (first informacion)
+                      (second informacion)
+                      (third informacion)))
+            datos)
+    (format stream "~%--- Fin del Informe ---")
+  )
 )
+    
+    )
+
