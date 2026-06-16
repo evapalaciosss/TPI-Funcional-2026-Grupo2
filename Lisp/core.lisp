@@ -1,4 +1,4 @@
-;;Requerimiento 1
+;;Requerimiento 1 
 
 ;; ======================================================== 
 ;; FUNCION: transicion
@@ -8,21 +8,55 @@
 ;; ======================================================== 
 
 (defun transicion (color-actual cambiar-a)
-    (cond
-        ((and (eq color-actual 'en-rojo) (eq cambiar-a 'verde)) ;;cambie varias veces el orden del que hacia el cambio de color
-            (list color-actual 'Cambiar-a-verde)
+   (cond
+
+       ((and (eq color-actual 'en-rojo)
+            (eq cambiar-a 'verde))
+
+          (list color-actual
+                 'amarillo-intermitente
+                 "cambiar-a-verde")
+       )
+       ((and (eq color-actual 'en-verde)
+             (eq cambiar-a 'amarillo))
+
+             (list color-actual
+                 'amarillo-intermitente
+				 "cambiar-a-amarillo")
+       )
+
+        ((and (eq color-actual 'en-amarillo)
+			  (eq cambiar-a 'rojo))
+
+            (list color-actual
+                  'amarillo-intermitente
+                  "cambiar-a-rojo")
         )
-        ((and (eq color-actual 'en-verde) (eq cambiar-a 'amarillo))
-            (list color-actual 'Cambiar-a-amarillo)
-        )
-        ((and (eq color-actual 'en-amarillo) (eq cambiar-a 'rojo))
-            (list color-actual 'Cambiar-a-rojo)
-        )
-        (t
-            (list color-actual 'Accion-por-defecto) ;;Es en caso de que no se cumpla la validación de "cambiar-a"
-        )                                           ;;Ya que se da por hecho que el "color-actual ingresa sin inconvenientes"
-    )                                               ;;Mantiene robuzto al codigo
+	   ((and (eq color-actual 'amarillo-intermitente)   ;;Se incluye los casos de amarillo intermitente para evitar accion por defecto en casos validos
+             (eq cambiar-a 'verde))                     
+          (list color-actual
+                'amarillo-intermitente
+                "cambiar-a-verde")
+       )
+       ((and (eq color-actual 'amarillo-intermitente)
+             (eq cambiar-a 'rojo))
+          (list color-actual
+                'amarillo-intermitente
+                "cambiar-a-rojo")
+       )
+       ((and (eq color-actual 'amarillo-intermitente)
+             (eq cambiar-a 'amarillo))
+          (list color-actual
+                'amarillo-intermitente
+                "cambiar-a-amarillo"))    
+       (t
+           (list color-actual
+				'sin-intermitencia                     ;;Incluir esta aclaracion para completar los tres elemwntos de salida (estado - transicion - accion)
+                'accion-por-defecto)
+       )
+    )
 )
+
 
 ;;Requerimiento 2
 
@@ -198,55 +232,6 @@
 ;; IMPACTO: No destructiva
 ;; ========================================================
 
-(defun transicion (color-actual cambiar-a)
-   (cond
-
-       ((and (eq color-actual 'en-rojo)
-            (eq cambiar-a 'verde))
-
-          (list color-actual
-                 'amarillo-intermitente
-                 "cambiar-a-verde")
-       )
-       ((and (eq color-actual 'en-verde)
-             (eq cambiar-a 'amarillo))
-
-             (list color-actual
-                 'amarillo-intermitente
-				 "cambiar-a-amarillo")
-       )
-
-        ((and (eq color-actual 'en-amarillo)
-			  (eq cambiar-a 'rojo))
-
-            (list color-actual
-                  'amarillo-intermitente
-                  "cambiar-a-rojo")
-        )
-	   ((and (eq color-actual 'amarillo-intermitente)   ;;Se incluye los casos de amarillo intermitente para evitar accion por defecto en casos validos
-             (eq cambiar-a 'verde))                     
-          (list color-actual
-                'amarillo-intermitente
-                "cambiar-a-verde")
-       )
-       ((and (eq color-actual 'amarillo-intermitente)
-             (eq cambiar-a 'rojo))
-          (list color-actual
-                'amarillo-intermitente
-                "cambiar-a-rojo")
-       )
-       ((and (eq color-actual 'amarillo-intermitente)
-             (eq cambiar-a 'amarillo))
-          (list color-actual
-                'amarillo-intermitente
-                "cambiar-a-amarillo"))    
-       (t
-           (list color-actual
-				'sin-intermitencia                     ;;Incluir esta aclaracion para completar los tres elemwntos de salida (estado - transicion - accion)
-                'accion-por-defecto)
-       )
-    )
-)
 
 ;; ======================================================== 
 ;; FUNCION: timer
