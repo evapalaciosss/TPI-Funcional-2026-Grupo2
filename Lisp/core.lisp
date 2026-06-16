@@ -60,7 +60,28 @@
 ;;la intencion es dejar en caso de que no sea ni menor o igual a 89, ni mayor o igual a 210
 ;;asi simplemente queda ese intervalo de segundos en medio para el verde, quedando en el ultimo cond
 
-;;Requerimiento 3 con iteracion 2
+;;Requerimiento 3 con iteracion 2, y fase 2
+; ==================================================== 
+;; FUNCION: unix-a-normal
+;; NATURALEZA: Pura 
+;; ESTRATEGIA: Transformacion aritmetica
+;; IMPACTO: No destructiva
+;; ======================================================== 
+;;            QUICKLISP + LOCAL-TIME
+;; ========================================================
+;;Antes del inicio se debera poner:
+
+;;(ql:quickload "local-time")
+
+;;para cargar la libreria local-time
+
+(defun unix-a-normal (unix-time)
+  (local-time:format-timestring               ;;convierte en texto legible
+   nil
+   (local-time:universal-to-timestamp (+ unix-time 2208988800))   ;;Transforma en formato interno de lisp, y lo hace timestamp de local-time
+   :format '(:day "/" :month "/" :year " " :hour ":" :min ":" :sec))
+)
+
 
 ;; ======================================================== 
 ;; FUNCION: auditoria
@@ -86,22 +107,22 @@
            (let ((resto (mod tiempo 225)))
                 (cond
                     ((= resto 0)                  ;;si coindice con el tiempo pasado significa que hubo un cambio de una transicion 
-                       (format t "Tiempo ~A: La luz a cambiado de amarillo-intermitente a rojo~%" tiempo)   
+                       (format t "Tiempo ~A: La luz a cambiado de amarillo-intermitente a rojo~%" (unix-a-normal tiempo))   
                     )
                     ((= resto 90)
-                       (format t "Tiempo ~A: La luz a cambiado de rojo a verde-intermitente~%" tiempo)
+                       (format t "Tiempo ~A: La luz a cambiado de rojo a verde-intermitente~%" (unix-a-normal tiempo))
                     )
                     ((= resto 93)
-                       (format t "Tiempo ~A: La luz a cambiado de verde-intermitente a verde~%" tiempo)
+                       (format t "Tiempo ~A: La luz a cambiado de verde-intermitente a verde~%" (unix-a-normal tiempo))
                    )
                     ((= resto 213) 
-                        (format t "Tiempo ~A: La luz a cambiado de verde a amarillo-intermitente~%" tiempo)
+                        (format t "Tiempo ~A: La luz a cambiado de verde a amarillo-intermitente~%" (unix-a-normal tiempo))
                    )
                     ((= resto 216) 
-                        (format t "Tiempo ~A: La luz a cambiado de amarillo-intermitente a amarillo~%" tiempo)
+                        (format t "Tiempo ~A: La luz a cambiado de amarillo-intermitente a amarillo~%" (unix-a-normal tiempo))
                    )
                     ((= resto 222) 
-                        (format t "Tiempo ~A: La luz a cambiado de amarillo a rojo-intermitente ~%" tiempo)
+                        (format t "Tiempo ~A: La luz a cambiado de amarillo a rojo-intermitente ~%" (unix-a-normal tiempo))
                    )
                 )
             )
@@ -270,18 +291,7 @@
 
 
 ;;Requerimiento 3
-;; ======================================================== 
-;; FUNCION: unix-a-normal
-;; NATURALEZA: Pura 
-;; ESTRATEGIA: 
-;; IMPACTO: No destructiva
-;; ======================================================== 
-(defun unix-a-normal (unix-time)
-  (local-time:format-timestring               ;;convierte en texto legible
-   nil
-   (local-time:universal-to-timestamp (+ unix-time 2208988800))   ;;Transforma en formato interno de lisp, y lo hace timestamp de local-time
-   :format '(:day "/" :month "/" :year " " :hour ":" :min ":" :sec))
-)
+;; ====
 
 
 
