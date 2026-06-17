@@ -6,8 +6,8 @@
 ## 👥 Integrantes - Grupo N°2
 * **Caraballo, Ivan Jeremias      - GitHub: jeres-ic  
 * **Castillo, Gonzalo Uriel       - GitHub: gonzalo-uc 
-* **Escalante, Enzo Leonel        - GitHub: 
-* **Gómez, Jonathan Daniel        - GitHub: 
+* **Escalante, Enzo Leonel        - GitHub: enzoesc4lante-tech 
+* **Gómez, Jonathan Daniel        - GitHub: jonathanG0mez 
 * **Palacios, Evangelina Victoria - GitHub: evapalaciosss  
 ---------------------------------------------------------------------------------------------
 
