@@ -1,5 +1,4 @@
-;;Requerimiento 1 con Iteracion 2 Extencion 1
-
+;; REQUERIMIENTO 1: CON ITERACION 2 / EXTENSION 1
 ;; ======================================================== 
 ;; FUNCION: transicion
 ;; NATURALEZA: Pura (Devuelve la lista con la transicion de colores realiza) 
@@ -36,8 +35,7 @@
 
 
 
-;;Requerimiento 2 con Iteracion 2 Extencion 1
-
+;; REQUERIMIENTO 2: CON ITERACION 2 / EXTENSION 1
 ;; ======================================================== 
 ;; FUNCION: timer
 ;; NATURALEZA:  Pura (no devuelve nada en pantalla)
@@ -60,7 +58,8 @@
 ;;la intencion es dejar en caso de que no sea ni menor o igual a 89, ni mayor o igual a 210
 ;;asi simplemente queda ese intervalo de segundos en medio para el verde, quedando en el ultimo cond
 
-;;Requerimiento 3 con Iteracion 2 Extencion 1, y fase 2
+
+;; REQUERIMIENTO 3: ITERACION 2 / EXTENSION 1 Y FASE 2 
 ; =========================================================
 ;;            QUICKLISP + LOCAL-TIME
 ;; ========================================================
@@ -133,7 +132,8 @@
     )
 )
 
-;;Requerimiento 4 a) con Iteracion 2 Extencion 1
+
+;; REQUERIMIENTO 4 a) / ITERACION 2 / EXTENSION 1
 ;; ------------------------------------------------------------
 ;; Función: duracion-ciclo
 ;; Naturaleza: Pura (sin efectos secundarios)
@@ -148,7 +148,8 @@
    (+ Seg-rojo Seg-amarillo Seg-verde (* 3 Seg-intermitencia))
 )
 
-;;Requerimiento 4 b) con Iteracion 2 Extencion 1
+
+;; REQUERIMIENTO 4 b): ITERACION 2 / EXTENSION 1 
 ;; ------------------------------------------------------------
 ;; Función: recomendacion-ciclo
 ;; Naturaleza: Pura (sin efectos secundarios)
@@ -168,8 +169,8 @@
 )
 
 
-;;Requerimiento N°5 con Iteracion 2 Extencion 1
 
+;; REQUERIMIENTO 5: ITERACION 2 / EXTENSION 1
 ;; =================================================================================================================
 ;; FUNCIÓN: ciclos-por-tiempo
 ;; NATURALEZA: Pura (Retorna la cantidad de ciclos completos)
@@ -181,8 +182,8 @@
 (defun ciclos-por-tiempo (minutos)
   (floor (* minutos 60) 225))
 
-;;Requerimiento N°6 con Iteracion 2 Extencion 1
 
+;; REQUERIMIENTO 6: ITERACION 2 / EXTENSION 1
 ;; ===================================================================================================================================
 ;; FUNCIÓN: informe-distribucion
 ;; NATURALEZA: Impura (Ademas de calcular porcentajes, muestra resultados por pantalla mediante format)
@@ -251,6 +252,9 @@
         (format t "Porcentaje Amarillo: ~,2F%~%" porcentaje-amarillo)
         (format t "Porcentaje Rojo Intermitente: ~,2F%~%" porcentaje-rojo-inter))))
 
+
+
+
 ;; ========================================================
 ;; ITERACION 2 - PERSISTENCIA DE DATOS
 ;; ========================================================
@@ -262,7 +266,7 @@
 ;; IMPACTO: No destructiva
 ;; ========================================================
 
-(defun informe (datos)        ;;los datos son distitas salida de la funcion auditoria
+(defun informe (datos)        ;;La informacion se proporciona 
     (with-open-file
         (stream
         "informe-ejecucion-semaforo.txt"
@@ -278,8 +282,6 @@
                       (third informacion)))
             datos)
     (format stream "~%--- Fin del Informe ---")
-  )
+ )
 )
-    
-    )
 
