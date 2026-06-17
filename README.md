@@ -5,7 +5,7 @@
 ---------------------------------------------------------------------------------------------
 ## 👥 Integrantes - Grupo N°2
 * **Caraballo, Ivan Jeremias      - GitHub:  
-* **Castillo, Gonzalo Uriel       - GitHub: 
+* **Castillo, Gonzalo Uriel       - GitHub: gonzalo-uc 
 * **Escalante, Enzo Leonel        - GitHub: 
 * **Gómez, Jonathan Daniel        - GitHub: 
 * **Palacios, Evangelina Victoria - GitHub:  
