@@ -8,7 +8,7 @@
 * **Castillo, Gonzalo Uriel       - GitHub: gonzalo-uc 
 * **Escalante, Enzo Leonel        - GitHub: 
 * **Gómez, Jonathan Daniel        - GitHub: 
-* **Palacios, Evangelina Victoria - GitHub:  
+* **Palacios, Evangelina Victoria - GitHub: evapalaciosss  
 ---------------------------------------------------------------------------------------------
 
 🎥 **Enlace a la Defensa Técnica (YouTube):** link al Video
