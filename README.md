@@ -4,7 +4,7 @@
 
 ---------------------------------------------------------------------------------------------
 ## 👥 Integrantes - Grupo N°2
-* **Caraballo, Ivan Jeremias      - GitHub:  
+* **Caraballo, Ivan Jeremias      - GitHub: jeres-ic  
 * **Castillo, Gonzalo Uriel       - GitHub: gonzalo-uc 
 * **Escalante, Enzo Leonel        - GitHub: 
 * **Gómez, Jonathan Daniel        - GitHub: 
