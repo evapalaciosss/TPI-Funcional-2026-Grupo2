@@ -135,11 +135,10 @@
 
 ;; REQUERIMIENTO 4 a) / ITERACION 2 / EXTENSION 1
 ;; ------------------------------------------------------------
-;; Función: duracion-ciclo
-;; Naturaleza: Pura (sin efectos secundarios)
-;; Estrategia de Control: Aritmética 
-;; Impacto en Memoria: No Destructiva
-;; Clasificación: Función de cálculo de duración de ciclo semafórico
+;; FUNCIÓN: duracion-ciclo
+;; NATURALEZA: Pura (sin efectos secundarios)
+;; ESTRATEGIA: Aritmética 
+;; IMPACTO en Memoria: No Destructiva
 ;; ------------------------------------------------------------
 
 ;;la logica aqui consta en ingresar los segundos de cada color del semaforo rojo,amarillo y verde, luego con los segundos de duracion de la intermitencia se multiplica por 3
@@ -151,11 +150,10 @@
 
 ;; REQUERIMIENTO 4 b): ITERACION 2 / EXTENSION 1 
 ;; ------------------------------------------------------------
-;; Función: recomendacion-ciclo
-;; Naturaleza: Pura (sin efectos secundarios)
-;; Estrategia de Control: Condicional Simple (clasificación de valores)
-;; Impacto en Memoria: No Destructiva (devuelve nuevo valor)
-;; Clasificación: Función de recomendación sobre duración de ciclo semafórico
+;; FUNCIÓN: recomendacion-ciclo
+;; NATURALEZA: Pura (sin efectos secundarios)
+;; ESTRATEGIA: Condicional Simple (clasificación de valores)
+;; IMPACTO: No Destructiva (devuelve nuevo valor)
 ;; ------------------------------------------------------------
 
 ;;total es la duracion ingresada como parametro, del ciclo del semaforo y en base a eso recomienda si el ciclo ingresado por parametro es el mas adecuado o no con mensajes
