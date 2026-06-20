@@ -174,7 +174,6 @@
 ;; NATURALEZA: Pura (Retorna la cantidad de ciclos completos)
 ;; ESTRATEGIA: Transformacion aritmetica (Convierte minutos a segundos y calcula ciclos completos mediante floor)
 ;; IMPACTO: No destructiva (No modifica variables ni estructuras)
-;; PROPOSITO: Determinar cuantos ciclos completos de 225 segundos pueden realizarse en un intervalo de tiempo dado.
 ;; =================================================================================================================
 
 (defun ciclos-por-tiempo (minutos)
