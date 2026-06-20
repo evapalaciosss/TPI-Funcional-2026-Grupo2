@@ -186,7 +186,6 @@
 ;; NATURALEZA: Impura (Ademas de calcular porcentajes, muestra resultados por pantalla mediante format)
 ;; ESTRATEGIA: Resta acumulativa (Resta los segundos ya asignados al total sobrante para al siguiente estado)
 ;; IMPACTO: No destructiva (No modifica variables externas ni estructuras de datos)
-;; PROPOSITO: Calcular y mostrar los porcentajes, usando el orden: Rojo, Verde-Int, Verde, Amarillo-Int, Amarillo, Rojo-Int
 ;; ===================================================================================================================================
 
 (defun informe-distribucion (minutos)
