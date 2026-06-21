@@ -11,7 +11,7 @@
 * **Palacios, Evangelina Victoria - GitHub: evapalaciosss  
 ---------------------------------------------------------------------------------------------
 
-🎥 **Enlace a la Defensa Técnica (YouTube): https://www.youtube.com/watch?v=G-tBeM0nAno** 
+🎥 **Enlace a la Defensa Técnica (YouTube): [https://www.youtube.com/watch?v=G-tBeM0nAno**](https://youtu.be/O2a6dc5Acmw)**
 
 ---------------------------------------------------------------------------------------------
 
